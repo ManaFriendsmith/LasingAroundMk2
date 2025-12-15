@@ -854,6 +854,54 @@ if mods["castra"] and misc.starting_planet ~= "castra" then
     })
 end
 
+if mods["planet-muluna"] and misc.starting_planet ~= "muluna" then
+    data:extend({
+        {
+            type = "technology",
+            name = "carbon-dioxide-lasers",
+            icons = {
+                {
+                    icon = "__base__/graphics/technology/laser.png",
+                    icon_size = 256,
+                    icon_mipmaps = 4
+                },
+                {
+                    icon = "__muluna-graphics__/graphics/icons/silicon-cell.png",
+                    icon_size = 64,
+                    icon_mipmaps = 4,
+                    scale = 0.5,
+                    shift = {32, 32}
+                }
+            },
+            effects = {
+                {
+                    type = "unlock-recipe",
+                    recipe = "lunaser"
+                }
+            },
+            prerequisites = {"promethium-science-pack"},
+            unit = {
+                count = 20000,
+                time = 60,
+                ingredients = {
+                    {"automation-science-pack", 1},
+                    {"logistic-science-pack", 1},
+                    {"military-science-pack", 1},
+                    {"chemical-science-pack", 1},
+                    {"production-science-pack", 1},
+                    {"utility-science-pack", 1},
+                    {"space-science-pack", 1},
+                    {"metallurgic-science-pack", 1},
+                    {"electromagnetic-science-pack", 1},
+                    {"agricultural-science-pack", 1},
+                    {"cryogenic-science-pack", 1},
+                    {"promethium-science-pack", 1}
+                }
+            }
+        }
+    })
+end
+
 if mods["castra"] then
     data:extend({
         {

@@ -228,6 +228,7 @@ if mods["LunarLandings"] then
         tm.AddSciencePack("controlled-bioluminescence", "ll-space-science-pack")
         tm.AddSciencePack("propaganda", "ll-space-science-pack")
         tm.AddSciencePack("coherent-salt-lamps", "ll-space-science-pack")
+        tm.AddSciencePack("carbon-dioxide-lasers", "ll-space-science-pack")
 
         tm.AddSciencePack("robot-estrogen", "ll-quantum-science-pack")
         tm.AddSciencePack("a-world-with-substantially-less-zinc", "ll-quantum-science-pack")
@@ -236,6 +237,7 @@ if mods["LunarLandings"] then
         tm.AddSciencePack("controlled-bioluminescence", "ll-quantum-science-pack")
         tm.AddSciencePack("propaganda", "ll-quantum-science-pack")
         tm.AddSciencePack("coherent-salt-lamps", "ll-quantum-science-pack")
+        tm.AddSciencePack("carbon-dioxide-lasers", "ll-quantum-science-pack")
 
     end
 end
@@ -248,6 +250,7 @@ if mods["maraxsis"] then
     tm.AddSciencePack("controlled-bioluminescence", "hydraulic-science-pack")
     tm.AddSciencePack("propaganda", "hydraulic-science-pack")
     tm.AddSciencePack("coherent-salt-lamps", "hydraulic-science-pack")
+    tm.AddSciencePack("carbon-dioxide-lasers", "hydraulic-science-pack")
 
     if misc.difficulty == 3 then
         rm.AddIngredient("maraxsis-conduit", "cardinal-grammeter", 10)
@@ -277,6 +280,7 @@ if mods["Paracelsin"] then
     tm.AddSciencePack("controlled-bioluminescence", "galvanization-science-pack")
     tm.AddSciencePack("propaganda", "galvanization-science-pack")
     tm.AddSciencePack("coherent-salt-lamps", "galvanization-science-pack")
+    tm.AddSciencePack("carbon-dioxide-lasers", "galvanization-science-pack")
 
     if misc.difficulty == 3 then
         tm.AddUnlock("cryovolcanic-power", "heat-pipe-vaterite")
@@ -325,6 +329,7 @@ if mods["castra"] then
     tm.AddSciencePack("controlled-bioluminescence", "battlefield-science-pack")
     tm.AddSciencePack("propaganda", "battlefield-science-pack")
     tm.AddSciencePack("coherent-salt-lamps", "battlefield-science-pack")
+    tm.AddSciencePack("carbon-dioxide-lasers", "battlefield-science-pack")
 
     if misc.starting_planet == "castra" then
         tm.AddUnlock("forge", "milaser")
@@ -337,6 +342,33 @@ if mods["castra"] then
     rm.RemoveProduct("reverse-cracking", "crude-oil", 5)
     rm.AddProduct("reverse-cracking", "filtered-oil", 5)
     rm.AddLaserMillData("nickel-battery", false, {helium=-1, unlock="millerite-processing"})
+end
+
+if mods["planet-muluna"] then
+    if misc.difficulty == 3 then
+        rm.ReplaceIngredientProportional("muluna-satellite-radar", "processing-unit", "cardinal-grammeter")
+        rm.AddIngredient("dormant-newtronic-chip", "silicon-cell")
+    end
+    tm.AddPrerequisite("muluna-cycling-steam-turbine", "spectroscopy")
+    rm.ReplaceIngredientProportional("muluna-cycling-steam-turbine", "superconductor", "spectroscope")
+
+    tm.AddSciencePack("robot-estrogen", "interstellar-science-pack")
+    tm.AddSciencePack("a-world-with-substantially-less-zinc", "interstellar-science-pack")
+    tm.AddSciencePack("lava-containment", "interstellar-science-pack")
+    tm.AddSciencePack("holmium-excitation", "interstellar-science-pack")
+    tm.AddSciencePack("controlled-bioluminescence", "interstellar-science-pack")
+    tm.AddSciencePack("propaganda", "interstellar-science-pack")
+    tm.AddSciencePack("coherent-salt-lamps", "interstellar-science-pack")
+    tm.AddSciencePack("carbon-dioxide-lasers", "interstellar-science-pack")
+
+    rm.AddLaserMillData("aluminum-cable", false, {helium=-1})
+
+    rm.RemoveProduct("crude-oil-from-tar", "crude-oil", 40)
+    rm.AddProduct("crude-oil-from-tar", "filtered-oil", 40)
+
+    if misc.starting_planet == "muluna" then
+        tm.AddUnlock("muluna-silicon-processing", "lunaser")
+    end
 end
 
 if data.raw.recipe["dormant-newtronic-chip"] then

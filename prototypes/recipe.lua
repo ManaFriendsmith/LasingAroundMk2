@@ -520,6 +520,41 @@ if mods["castra"] then
     data:extend({h2srecipe})
 end
 
+if mods["planet-muluna"] then
+    data:extend({
+        {
+            type = "recipe",
+            name = "lunaser",
+            category = "electronics",
+            icons = {
+                {
+                    icon = "__LasingAroundMk2__/graphics/icons/laser.png",
+                    icon_size = 64
+                },
+                {
+                    icon = "__muluna-graphics__/graphics/icons/silicon-cell.png",
+                    icon_size = 64,
+                    scale = 0.25,
+                    shift = {8, 8}
+                }
+            },
+            ingredients = {
+                {type="item", name="advanced-circuit", amount=1},
+                {type="item", name="battery", amount=3},
+                {type="fluid", name="carbon-dioxide", amount=200},
+                {type="item", name="silicon-cell", amount=3},
+            },
+            results = {
+                {type="item", name="laser", amount=1}
+            },
+            auto_recycle = false,
+            energy_required = 16,
+            allow_productivity = true,
+            enabled = false
+        }
+    })
+end
+
 if tune_up_data then
   tune_up_data.recipes["laser"] = {
     category = "tuning-up",
