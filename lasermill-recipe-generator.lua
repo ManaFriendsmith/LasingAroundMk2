@@ -442,6 +442,13 @@ end
 
 for name, helium in pairs(new_recipes_helium) do
   rm.AddIngredient(name, "helium", helium)
+  local i = 1
+  for k, v in pairs(data.raw.recipe[name].ingredients) do
+    if v.type == "fluid" then
+      v.fluidbox_index = i
+      i = i + 1
+    end
+  end
 end
 
 log(serpent.block(canonical_item_costs))
