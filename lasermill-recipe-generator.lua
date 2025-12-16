@@ -388,23 +388,15 @@ for name, recipe in pairs(data.raw.recipe) do
 
         if hide_duplicates then
           recipe_copy.hide_from_player_crafting = true
-          if recipe_copy.normal then recipe_copy.normal.hide_from_player_crafting = true end
-          if recipe_copy.expensive then recipe_copy.expensive.hide_from_player_crafting = true end
         end
 
         recipe_copy.always_show_made_in = true
-        if recipe_copy.normal then recipe_copy.normal.always_show_made_in = true end
-        if recipe_copy.expensive then recipe_copy.expensive.always_show_made_in = true end
 
         --allow more convenience for specifying this
         if lasdata.unlock == true then
           recipe_copy.enabled = true
-          if recipe_copy.normal then recipe_copy.normal.enabled = true end
-          if recipe_copy.expensive then recipe_copy.expensive.enabled = true end
         else
           recipe_copy.enabled = false
-          if recipe_copy.normal then recipe_copy.normal.enabled = false end
-          if recipe_copy.expensive then recipe_copy.expensive.enabled = false end
           if lasdata.unlock ~= false then
             if lasdata.unlock == nil then lasdata.unlock = {"laser-mill"} end
             if type(lasdata.unlock) == "string" then lasdata.unlock = {lasdata.unlock} end
