@@ -220,38 +220,10 @@ if mods["LunarLandings"] then
                 min = 10
             }
         }
-
-        tm.AddSciencePack("robot-estrogen", "ll-space-science-pack")
-        tm.AddSciencePack("a-world-with-substantially-less-zinc", "ll-space-science-pack")
-        tm.AddSciencePack("lava-containment", "ll-space-science-pack")
-        tm.AddSciencePack("holmium-excitation", "ll-space-science-pack")
-        tm.AddSciencePack("controlled-bioluminescence", "ll-space-science-pack")
-        tm.AddSciencePack("propaganda", "ll-space-science-pack")
-        tm.AddSciencePack("coherent-salt-lamps", "ll-space-science-pack")
-        tm.AddSciencePack("carbon-dioxide-lasers", "ll-space-science-pack")
-
-        tm.AddSciencePack("robot-estrogen", "ll-quantum-science-pack")
-        tm.AddSciencePack("a-world-with-substantially-less-zinc", "ll-quantum-science-pack")
-        tm.AddSciencePack("lava-containment", "ll-quantum-science-pack")
-        tm.AddSciencePack("holmium-excitation", "ll-quantum-science-pack")
-        tm.AddSciencePack("controlled-bioluminescence", "ll-quantum-science-pack")
-        tm.AddSciencePack("propaganda", "ll-quantum-science-pack")
-        tm.AddSciencePack("coherent-salt-lamps", "ll-quantum-science-pack")
-        tm.AddSciencePack("carbon-dioxide-lasers", "ll-quantum-science-pack")
-
     end
 end
 
 if mods["maraxsis"] then
-    tm.AddSciencePack("robot-estrogen", "hydraulic-science-pack")
-    tm.AddSciencePack("a-world-with-substantially-less-zinc", "hydraulic-science-pack")
-    tm.AddSciencePack("lava-containment", "hydraulic-science-pack")
-    tm.AddSciencePack("holmium-excitation", "hydraulic-science-pack")
-    tm.AddSciencePack("controlled-bioluminescence", "hydraulic-science-pack")
-    tm.AddSciencePack("propaganda", "hydraulic-science-pack")
-    tm.AddSciencePack("coherent-salt-lamps", "hydraulic-science-pack")
-    tm.AddSciencePack("carbon-dioxide-lasers", "hydraulic-science-pack")
-
     if misc.difficulty == 3 then
         rm.AddIngredient("maraxsis-conduit", "cardinal-grammeter", 10)
         rm.AddIngredient("maraxsis-sonar", "cardinal-grammeter", 10)
@@ -272,15 +244,6 @@ if mods["Paracelsin"] then
     rm.AddLaserMillData("electric-coil", false, {helium=-1, unlock="mechanical-plant"})
     rm.AddLaserMillData("paracelsin-processing-units-from-nitric-acid", false, {helium=-1, unlock="electrochemical-plant", icon_offset={8, -8}})
     rm.AddLaserMillData("batteries-from-nitric-acid", false, {helium=-1, unlock="mechanical-plant", icon_offset={8, -8}})
-
-    tm.AddSciencePack("robot-estrogen", "galvanization-science-pack")
-    tm.AddSciencePack("a-world-with-substantially-less-zinc", "galvanization-science-pack")
-    tm.AddSciencePack("lava-containment", "galvanization-science-pack")
-    tm.AddSciencePack("holmium-excitation", "galvanization-science-pack")
-    tm.AddSciencePack("controlled-bioluminescence", "galvanization-science-pack")
-    tm.AddSciencePack("propaganda", "galvanization-science-pack")
-    tm.AddSciencePack("coherent-salt-lamps", "galvanization-science-pack")
-    tm.AddSciencePack("carbon-dioxide-lasers", "galvanization-science-pack")
 
     if misc.difficulty == 3 then
         tm.AddUnlock("cryovolcanic-power", "heat-pipe-vaterite")
@@ -322,15 +285,6 @@ if mods["castra"] then
         rm.ReplaceIngredientProportional("jammer-radar", "processing-unit", "cardinal-grammeter", 1)
     end
 
-    tm.AddSciencePack("robot-estrogen", "battlefield-science-pack")
-    tm.AddSciencePack("a-world-with-substantially-less-zinc", "battlefield-science-pack")
-    tm.AddSciencePack("lava-containment", "battlefield-science-pack")
-    tm.AddSciencePack("holmium-excitation", "battlefield-science-pack")
-    tm.AddSciencePack("controlled-bioluminescence", "battlefield-science-pack")
-    tm.AddSciencePack("propaganda", "battlefield-science-pack")
-    tm.AddSciencePack("coherent-salt-lamps", "battlefield-science-pack")
-    tm.AddSciencePack("carbon-dioxide-lasers", "battlefield-science-pack")
-
     if misc.starting_planet == "castra" then
         tm.AddUnlock("forge", "milaser")
     end
@@ -352,15 +306,6 @@ if mods["planet-muluna"] then
     tm.AddPrerequisite("muluna-cycling-steam-turbine", "spectroscopy")
     rm.ReplaceIngredientProportional("muluna-cycling-steam-turbine", "superconductor", "spectroscope")
 
-    tm.AddSciencePack("robot-estrogen", "interstellar-science-pack")
-    tm.AddSciencePack("a-world-with-substantially-less-zinc", "interstellar-science-pack")
-    tm.AddSciencePack("lava-containment", "interstellar-science-pack")
-    tm.AddSciencePack("holmium-excitation", "interstellar-science-pack")
-    tm.AddSciencePack("controlled-bioluminescence", "interstellar-science-pack")
-    tm.AddSciencePack("propaganda", "interstellar-science-pack")
-    tm.AddSciencePack("coherent-salt-lamps", "interstellar-science-pack")
-    tm.AddSciencePack("carbon-dioxide-lasers", "interstellar-science-pack")
-
     rm.AddLaserMillData("aluminum-cable", false, {helium=-1})
 
     rm.RemoveProduct("crude-oil-from-tar", "crude-oil", 40)
@@ -368,6 +313,30 @@ if mods["planet-muluna"] then
 
     if misc.starting_planet == "muluna" then
         tm.AddUnlock("muluna-silicon-processing", "lunaser")
+    end
+end
+
+if mods["Cerys-Moon-of-Fulgora"] then
+    if misc.difficulty == 3 then
+        rm.ReplaceIngredientProportional("cerys-overclock-module", "processing-unit", "cardinal-grammeter")
+        tm.AddUnlock("cerys-overclock-module", "cardinal-grammeter")
+
+        rm.AddIngredient("dormant-newtronic-chip", "plutonium-239")
+        data.raw.recipe["ancient-structure-repair-part"].surface_conditions = {
+            {
+                property = "cerys-ambient-radiation",
+                min = 400
+            }
+        }
+    end
+
+    rm.AddLaserMillData("cerys-processing-units-from-nitric-acid", false, {helium=-1, unlock="cerys-fulgoran-cryogenics", icon_offset={8, -8}})
+
+    if misc.difficulty > 1 then
+        tm.AddUnlock("cerys-nuclear-scrap-recycling", "weird-alien-gizmo-recycling")
+        rm.AddProduct("cerys-nuclear-scrap-recycling", {type="item", name="weird-alien-gizmo", amount=1, probability=0.02})
+    else
+        rm.AddProduct("cerys-nuclear-scrap-recycling", {type="item", name="laser", amount=1, probability=0.005})
     end
 end
 
