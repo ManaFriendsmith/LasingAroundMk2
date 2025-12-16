@@ -563,6 +563,8 @@ if mods["space-age"] and misc.difficulty == 3 then
                 }
             }
         })
+
+        tm.AddSciencePacks("robot-estrogen", tm.post_promethium_sciences)
     end
 end
 
@@ -612,6 +614,8 @@ if mods["space-age"] and misc.starting_planet ~= "vulcanus" then
             }
         }
     })
+
+    tm.AddSciencePacks("lava-containment", tm.post_promethium_sciences)
 end
 
 if mods["space-age"] and misc.starting_planet ~= "fulgora" then
@@ -660,6 +664,8 @@ if mods["space-age"] and misc.starting_planet ~= "fulgora" then
             }
         }
     })
+
+    tm.AddSciencePacks("holmium-excitation", tm.post_promethium_sciences)
 end
 
 if mods["space-age"] and misc.starting_planet ~= "gleba" then
@@ -708,6 +714,8 @@ if mods["space-age"] and misc.starting_planet ~= "gleba" then
             }
         }
     })
+
+    tm.AddSciencePacks("controlled-bioluminescence", tm.post_promethium_sciences)
 end
 
 if mods["Paracelsin"] and misc.starting_planet ~= "paracelsin" then
@@ -756,6 +764,8 @@ if mods["Paracelsin"] and misc.starting_planet ~= "paracelsin" then
             }
         }
     })
+
+    tm.AddSciencePacks("a-world-with-substantially-less-zinc", tm.post_promethium_sciences)
 end
 
 if mods["maraxsis"] and misc.starting_planet ~= "maraxsis" then
@@ -804,6 +814,8 @@ if mods["maraxsis"] and misc.starting_planet ~= "maraxsis" then
             }
         }
     })
+
+    tm.AddSciencePacks("coherent-salt-lamps", tm.post_promethium_sciences)
 end
 
 if mods["castra"] and misc.starting_planet ~= "castra" then
@@ -852,6 +864,8 @@ if mods["castra"] and misc.starting_planet ~= "castra" then
             }
         }
     })
+
+    tm.AddSciencePacks("propaganda", tm.post_promethium_sciences)
 end
 
 if mods["planet-muluna"] and misc.starting_planet ~= "muluna" then
@@ -900,6 +914,8 @@ if mods["planet-muluna"] and misc.starting_planet ~= "muluna" then
             }
         }
     })
+
+    tm.AddSciencePacks("carbon-dioxide-lasers", tm.post_promethium_sciences)
 end
 
 if mods["castra"] then
