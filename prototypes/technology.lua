@@ -224,8 +224,57 @@ else
                     {"agricultural-science-pack", 1}
                 }
             }
+        },
+        {
+            type = "technology",
+            name = "helium-productivity",
+            icons = {
+              {
+                icon = "__LasingAroundMk2__/graphics/technology/helium-extraction.png",
+                icon_size = 256
+              },
+              {
+                icon = "__core__/graphics/icons/technology/constants/constant-mining-productivity.png",
+                icon_size = 128,
+                scale = 0.5,
+                shift = {50, 50}
+              }
+            },
+            effects = {
+                {
+                    type = "change-recipe-productivity",
+                    recipe = "advanced-oil-filtration",
+                    change = 0.05
+                },
+                {
+                    type = "change-recipe-productivity",
+                    recipe = "spectroscopic-oil-filtration",
+                    change = 0.05
+                },
+            },
+            prerequisites = {"spectroscopic-petrochemistry", "laser-mill"},
+            unit = {
+                count_formula = "1.5^L*1000",
+                time = 60,
+                ingredients = {
+                    {"automation-science-pack", 1},
+                    {"logistic-science-pack", 1},
+                    {"chemical-science-pack", 1},
+                    {"production-science-pack", 1},
+                    {"space-science-pack", 1},
+                    {"electromagnetic-science-pack", 1},
+                    {"metallurgic-science-pack", 1},
+                    {"agricultural-science-pack", 1}
+                }
+            },
+            upgrade=true,
+            max_level="infinite"
         }
     })
+
+    if mods["LunarLandings"] then
+        tm.AddUnlock("helium-productivity", {type="change-recipe-productivity", recipe="ll-helium-extraction", change=0.1})
+    end
 end
 
 
