@@ -551,6 +551,37 @@ if mods["space-age"] and misc.difficulty == 3 then
         },
         {
             type = "technology",
+            name = "brain-galactification",
+            icon = "__LasingAroundMk2__/graphics/technology/brain-galactification.png",
+            icon_size = 256,
+            effects = {
+                {
+                    type = "unlock-recipe",
+                    recipe = "brain-galactification"
+                }
+            },
+            prerequisites = {"promethium-science-pack"},
+            unit = {
+                count = 10000,
+                time = 60,
+                ingredients = {
+                    {"automation-science-pack", 1},
+                    {"logistic-science-pack", 1},
+                    {"chemical-science-pack", 1},
+                    {"military-science-pack", 1},
+                    {"space-science-pack", 1},
+                    {"production-science-pack", 1},
+                    {"utility-science-pack", 1},
+                    {"metallurgic-science-pack", 1},
+                    {"electromagnetic-science-pack", 1},
+                    {"agricultural-science-pack", 1},
+                    {"cryogenic-science-pack", 1},
+                    {"promethium-science-pack", 1},
+                }
+            }
+        },
+        {
+            type = "technology",
             name = "lasingaround-easter-egg",
             icon = "__base__/graphics/technology/automobilism.png",
             icon_size = 256,
@@ -572,6 +603,8 @@ if mods["space-age"] and misc.difficulty == 3 then
             }
         }
     })
+
+    tm.AddSciencePacks("brain-galactification", tm.post_promethium_sciences)
 
     if mods["BrassTacksMk2"] then
         tm.AddUnlock("waifugenesis", "clumsy-piston", "-ai-girlfriend")

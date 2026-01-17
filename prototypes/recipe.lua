@@ -938,6 +938,7 @@ if mods["space-age"] then
                 {type="item", name="electromagnetic-plant", amount=1},
                 {type="item", name="supercapacitor", amount=100},
                 {type="item", name="laser", amount=100},
+                {type="item", name="weird-alien-gizmo", amount=50},
                 {type="item", name="cardinal-grammeter", amount=50},
                 {type="fluid", name="helium", amount=250}
             },
@@ -953,7 +954,7 @@ if mods["space-age"] then
             category = "electromagnetics",
             ingredients = {
                 {type="item", name="battery", amount=1},
-                {type="fluid", name="helium", amount=25}
+                {type="fluid", name="helium", amount=10}
             },
             results = {
                 {type="item", name="antimatter-power-cell", amount=1}
@@ -1007,7 +1008,6 @@ if mods["space-age"] then
             },
             force_auto_recycle = true,
             energy_required = 20,
-            auto_recycle = false,
             enabled = false
         },
         {
@@ -1071,6 +1071,31 @@ if mods["space-age"] then
                 {type="item", name="weird-alien-gizmo", amount=1}
             },
             energy_required = 2,
+            auto_recycle = false,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "brain-galactification",
+            icon = "__LasingAroundMk2__/graphics/icons/brain-galactification.png",
+            icon_size = 64,
+            category = "organic",
+            ingredients = {
+                {type="item", name="ordinary-human-brain", amount=4},
+                {type="item", name="bioflux", amount=1}
+            },
+            results = {
+                {type="item", name="ordinary-human-brain", amount=4}
+            },
+            surface_conditions = {
+                {
+                    property = "pressure",
+                    min = 2000,
+                    max = 2000
+                }
+            },
+            maximum_productivity = 0,
+            energy_required = 16,
             auto_recycle = false,
             enabled = false
         },
@@ -1193,9 +1218,7 @@ if mods["space-age"] then
                 results = {
                     {type="item", name="perpendicular-processor", amount=1}
                 },
-                force_auto_recycle = true,
                 energy_required = 20,
-                auto_recycle = false,
                 enabled = false
             }
         })
@@ -1245,9 +1268,7 @@ if mods["space-age"] then
                 results = {
                     {type="item", name="logic-deregulator", amount=1}
                 },
-                force_auto_recycle = true,
                 energy_required = 20,
-                auto_recycle = false,
                 enabled = false
             }
         })
