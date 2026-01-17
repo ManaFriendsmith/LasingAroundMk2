@@ -85,7 +85,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="filtered-oil", amount=100, ignored_by_productivity=100},
-            {type="fluid", name="helium", amount=mods["LunarLandings"] and 20 or 10},
+            {type="fluid", name="helium", amount=mods["LunarLandings"] and 10 or 20},
             {type="item", name="spectroscope", amount=1, probability=0.99, ignored_by_stats=1, ignored_by_productivity=1},
             {type="fluid", name="heavy-oil", amount=5}
         },
