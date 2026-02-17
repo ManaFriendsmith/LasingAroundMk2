@@ -974,6 +974,7 @@ if mods["space-age"] then
             },
             energy_required = 2,
             auto_recycle = false,
+            allow_quality = false,
             enabled = false
         },
         {
@@ -992,6 +993,7 @@ if mods["space-age"] then
             },
             energy_required = 2,
             auto_recycle = false,
+            allow_quality = false,
             enabled = false
         },
         {
@@ -1022,6 +1024,7 @@ if mods["space-age"] then
             },
             energy_required = 2,
             auto_recycle = false,
+            allow_quality = false,
             enabled = false
         },
         {
@@ -1040,6 +1043,7 @@ if mods["space-age"] then
             },
             energy_required = 2,
             auto_recycle = false,
+            allow_quality = false,
             enabled = false
         },
         {
@@ -1054,6 +1058,7 @@ if mods["space-age"] then
             },
             energy_required = 2,
             auto_recycle = false,
+            allow_quality = false,
             enabled = false
         },
         {
@@ -1072,6 +1077,7 @@ if mods["space-age"] then
             },
             energy_required = 2,
             auto_recycle = false,
+            allow_quality = false,
             enabled = false
         },
         {
@@ -1153,6 +1159,7 @@ if mods["space-age"] then
                 maximum_productivity = 0,
                 energy_required = 3,
                 auto_recycle = false,
+                allow_quality = false,
                 enabled = false
             },
             {
@@ -1172,6 +1179,7 @@ if mods["space-age"] then
                 maximum_productivity = 0,
                 energy_required = 5,
                 auto_recycle = false,
+                allow_quality = false,
                 enabled = false
             },
             {
@@ -1186,6 +1194,7 @@ if mods["space-age"] then
                 },
                 energy_required = 2,
                 auto_recycle = false,
+                allow_quality = false,
                 enabled = false
             },
             {
@@ -1204,6 +1213,7 @@ if mods["space-age"] then
                 },
                 energy_required = 2,
                 auto_recycle = false,
+                allow_quality = false,
                 enabled = false
             },
             {
@@ -1236,6 +1246,7 @@ if mods["space-age"] then
                 },
                 energy_required = 2,
                 auto_recycle = false,
+                allow_quality = false,
                 enabled = false
             },
             {
@@ -1254,6 +1265,7 @@ if mods["space-age"] then
                 },
                 energy_required = 2,
                 auto_recycle = false,
+                allow_quality = false,
                 enabled = false
             },
             {
