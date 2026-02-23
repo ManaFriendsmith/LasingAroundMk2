@@ -1192,7 +1192,7 @@ if mods["space-age"] then
                 results = {
                     {type="item", name="art-rotators", amount=1}
                 },
-                energy_required = 2,
+                energy_required = 1,
                 auto_recycle = false,
                 allow_quality = false,
                 enabled = false
@@ -1211,7 +1211,7 @@ if mods["space-age"] then
                 results = {
                     {type="item", name="stem-cells", amount=1}
                 },
-                energy_required = 2,
+                energy_required = 1,
                 auto_recycle = false,
                 allow_quality = false,
                 enabled = false
@@ -1221,7 +1221,7 @@ if mods["space-age"] then
                 name = "perpendicular-processor",
                 category = "conceptual-inversion",
                 ingredients = {
-                    {type="item", name="art-rotators", amount=5},
+                    {type="item", name="art-rotators", amount=8},
                     {type="item", name="iron-stick", amount=7},
                     {type="item", name="processing-unit", amount=1}
                 },
