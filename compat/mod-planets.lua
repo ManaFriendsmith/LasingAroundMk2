@@ -340,6 +340,21 @@ if mods["Cerys-Moon-of-Fulgora"] then
     end
 end
 
+if mods["Moshine"] then
+    rm.AddIngredient("3d-data-storage", "laser")
+
+    --EM plant is already a prerequisite of visiting Moshine
+    if misc.difficulty == 3 then
+        rm.AddIngredient("data-processor", "cardinal-grammeter", 1)
+        rm.ReplaceIngredientProportional("data-extractor", "constant-combinator", "cardinal-grammeter")
+
+        rm.AddIngredient("dormant-newtronic-chip", "bubble-generator")
+        tm.AddPrerequisite("quantum-processor", "egg-reallocation")
+        tm.AddPrerequisite("energy-shield-mk2-equipment", "egg-reallocation")
+        rm.ReplaceIngredientProportional("energy-shield-mk2-equipment", "energy-shield-equipment", "bubble-generator", 1, 5)
+    end
+end
+
 if data.raw.recipe["dormant-newtronic-chip"] then
     local yield = math.floor((#data.raw.recipe["dormant-newtronic-chip"].ingredients - 1) / 2)
     rm.MultiplyRecipe("dormant-newtronic-chip", {input=1, time=yield, output=yield})

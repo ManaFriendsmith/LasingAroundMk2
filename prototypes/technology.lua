@@ -1043,3 +1043,37 @@ if mods["castra"] then
         }
     })
 end
+
+if mods["Moshine"] then
+    data:extend({
+        {
+            type = "technology",
+            name = "egg-reallocation",
+            icon = "__LasingAroundMk2__/graphics/technology/egg-reallocation.png",
+            icon_size = 256,
+            effects = {
+                {
+                    type = "unlock-recipe",
+                    recipe = "air-stock"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "air-stock-inversion"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "bubble-generator"
+                }
+            },
+            prerequisites = {"antiparticle-decelerator", "energy-shield-equipment", "moshine-tech-processing-grid"},
+            unit = {
+                count = 1000,
+                time = 600,
+                ingredients = {
+                    {"datacell-raw-data", 1},
+                    {"datacell-solved-equation", 1}
+                }
+            }
+        }
+    })
+end

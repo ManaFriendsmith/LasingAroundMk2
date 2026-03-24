@@ -116,6 +116,9 @@ if misc.difficulty > 1 then
     rm.AddIngredient("logistic-robot", "scanner")
 
     rm.ReplaceIngredientProportional("stack-inserter", "processing-unit", "scanner")
+    if mods["long_stack_inserter"] then
+        rm.AddIngredient("long-stack-inserter", "processing-unit")
+    end
 end
 
 if data.raw.item["micron-tolerance-components"] then

@@ -1349,4 +1349,61 @@ if mods["space-age"] then
             }
         })
     end
+
+    if mods["Moshine"] then
+        data:extend({
+            {
+                type = "recipe",
+                name = "air-stock",
+                category = "conceptual-inversion",
+                ingredients = {
+                    {type="item", name="water-barrel", amount=1}
+                },
+                results = {
+                    {type="item", name="air-stock", amount=1}
+                },
+                energy_required = 2,
+                auto_recycle = false,
+                allow_quality = false,
+                enabled = false
+            },
+            {
+                type = "recipe",
+                name = "air-stock-inversion",
+                localised_name = {"item-name.filled-barrel", {"fluid-name.water"}},
+                subgroup = "inversion",
+                order = "ia",
+                category = "conceptual-inversion",
+                hide_from_player_crafting = true,
+                ingredients = {
+                    {type="item", name="air-stock", amount=1}
+                },
+                results = {
+                    {type="item", name="water-barrel", amount=1}
+                },
+                energy_required = 2,
+                auto_recycle = false,
+                allow_quality = false,
+                enabled = false
+            },
+            {
+                type = "recipe",
+                name = "bubble-generator",
+                subgroup = "inversion",
+                category = "electromagnetics",
+                hide_from_player_crafting = true,
+                ingredients = {
+                    {type="item", name="air-stock", amount=1},
+                    {type="item", name="energy-shield-equipment", amount=1},
+                    {type="item", name="magnet", amount=3},
+                    {type="item", name="model-unstable", amount=1}
+                },
+                results = {
+                    {type="item", name="bubble-generator", amount=1}
+                },
+                energy_required = 10,
+                enabled = false
+            },
+        })
+    end
 end

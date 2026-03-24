@@ -362,7 +362,7 @@ if mods["space-age"] then
           icon = "__LasingAroundMk2__/graphics/icons/dormant-newtronic-chip.png",
           icon_size = 64,
           subgroup = "inversion",
-          order = "i",
+          order = "z",
           inventory_move_sound = item_sounds.module_inventory_move,
           pick_sound = item_sounds.module_inventory_pickup,
           drop_sound = item_sounds.module_inventory_move,
@@ -393,7 +393,7 @@ if mods["space-age"] then
             }
           },
           subgroup = "inversion",
-          order = "i2",
+          order = "z2",
           inventory_move_sound = item_sounds.module_inventory_move,
           pick_sound = item_sounds.module_inventory_pickup,
           drop_sound = item_sounds.module_inventory_move,
@@ -500,6 +500,63 @@ if mods["space-age"] then
           default_import_location = "nauvis",
           weight = 5*kg
         }
+      })
+    end
+
+    if mods["Moshine"] then
+      data:extend({
+          {
+            type = "item",
+            name = "air-stock",
+            icon = "__LasingAroundMk2__/graphics/icons/air-stock.png",
+            icon_size = 64,
+            pictures = {
+              layers = {
+                {
+                  size = 64,
+                  filename = "__LasingAroundMk2__/graphics/icons/air-stock.png",
+                  scale = 0.5
+                }
+              }
+            },
+            subgroup = "inversion",
+            order = "i",
+            inventory_move_sound = item_sounds.module_inventory_move,
+            pick_sound = item_sounds.module_inventory_pickup,
+            drop_sound = item_sounds.module_inventory_move,
+            stack_size = 100,
+            default_import_location = "nauvis",
+            weight = 0.001*kg
+          },
+          {
+            type = "item",
+            name = "bubble-generator",
+            icon = "__LasingAroundMk2__/graphics/icons/bubble-generator.png",
+            icon_size = 64,
+            pictures = {
+              layers = {
+                {
+                  size = 64,
+                  filename = "__LasingAroundMk2__/graphics/icons/bubble-generator.png",
+                  scale = 0.5
+                },
+                {
+                  size = 64,
+                  filename = "__LasingAroundMk2__/graphics/icons/bubble-generator-glow.png",
+                  scale = 0.5,
+                  draw_as_light = true
+                }
+              }
+            },
+            subgroup = "inversion",
+            order = "j",
+            inventory_move_sound = item_sounds.module_inventory_move,
+            pick_sound = item_sounds.module_inventory_pickup,
+            drop_sound = item_sounds.module_inventory_move,
+            stack_size = 50,
+            default_import_location = "nauvis",
+            weight = 5*kg
+          },
       })
     end
 end
