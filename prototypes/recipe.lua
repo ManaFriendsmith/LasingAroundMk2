@@ -938,6 +938,7 @@ if mods["space-age"] then
                 {type="item", name="electromagnetic-plant", amount=1},
                 {type="item", name="supercapacitor", amount=100},
                 {type="item", name="laser", amount=100},
+                {type="item", name="uranium-235", amount=50},
                 {type="item", name="weird-alien-gizmo", amount=50},
                 {type="item", name="cardinal-grammeter", amount=50},
                 {type="fluid", name="helium", amount=250}
