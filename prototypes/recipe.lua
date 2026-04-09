@@ -1015,40 +1015,6 @@ if mods["space-age"] then
         },
         {
             type = "recipe",
-            name = "weighted-blanket",
-            category = "conceptual-inversion",
-            ingredients = {
-                {type="item", name="lightning-rod", amount=1}
-            },
-            results = {
-                {type="item", name="weighted-blanket", amount=1}
-            },
-            energy_required = 2,
-            auto_recycle = false,
-            allow_quality = false,
-            enabled = false
-        },
-        {
-            type = "recipe",
-            name = "weighted-blanket-inversion",
-            localised_name = {"entity-name.lightning-rod"},
-            subgroup = "inversion",
-            order = "ea",
-            category = "conceptual-inversion",
-            hide_from_player_crafting = true,
-            ingredients = {
-                {type="item", name="weighted-blanket", amount=1}
-            },
-            results = {
-                {type="item", name="lightning-rod", amount=1}
-            },
-            energy_required = 2,
-            auto_recycle = false,
-            allow_quality = false,
-            enabled = false
-        },
-        {
-            type = "recipe",
             name = "ordinary-human-brain",
             category = "conceptual-inversion",
             ingredients = {
@@ -1111,7 +1077,7 @@ if mods["space-age"] then
             name = "ai-girlfriend",
             category = "electromagnetics",
             ingredients = {
-                {type="item", name="weighted-blanket", amount=1},
+                {type="item", name=mods["BrassTacksMk2"] and "clumsy-piston" or "weighted-blanket", amount=mods["BrassTacksMk2"] and 4 or 1},
                 {type="item", name="flying-robot-frame", amount=1},
                 {type="item", name="ordinary-human-brain", amount=1},
                 {type="item", name="rocket-control-unit", amount=1}
@@ -1322,8 +1288,43 @@ if mods["space-age"] then
                 enabled = false
             }
         })
-
-        rm.AddIngredient("ai-girlfriend", "clumsy-piston", 2)
+    else
+        data:extend({
+            {
+                type = "recipe",
+                name = "weighted-blanket",
+                category = "conceptual-inversion",
+                ingredients = {
+                    {type="item", name="lightning-rod", amount=1}
+                },
+                results = {
+                    {type="item", name="weighted-blanket", amount=1}
+                },
+                energy_required = 2,
+                auto_recycle = false,
+                allow_quality = false,
+                enabled = false
+            },
+            {
+                type = "recipe",
+                name = "weighted-blanket-inversion",
+                localised_name = {"entity-name.lightning-rod"},
+                subgroup = "inversion",
+                order = "ea",
+                category = "conceptual-inversion",
+                hide_from_player_crafting = true,
+                ingredients = {
+                    {type="item", name="weighted-blanket", amount=1}
+                },
+                results = {
+                    {type="item", name="lightning-rod", amount=1}
+                },
+                energy_required = 2,
+                auto_recycle = false,
+                allow_quality = false,
+                enabled = false
+            }
+        })
     end
 
     if mods["BrimStuffMk2"] and (mods["BrassTacksMk2"] or mods["IfNickelMk2"]) then

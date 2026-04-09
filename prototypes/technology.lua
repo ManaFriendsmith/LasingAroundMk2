@@ -517,11 +517,11 @@ if mods["space-age"] and misc.difficulty == 3 then
             effects = {
                 {
                     type = "unlock-recipe",
-                    recipe = "weighted-blanket"
+                    recipe = mods["BrassTacksMk2"] and "clumsy-piston" or "weighted-blanket"
                 },
                 {
                     type = "unlock-recipe",
-                    recipe = "weighted-blanket-inversion"
+                    recipe = mods["BrassTacksMk2"] and "clumsy-piston-inversion" or "weighted-blanket-inversion"
                 },
                 {
                     type = "unlock-recipe",
@@ -605,11 +605,6 @@ if mods["space-age"] and misc.difficulty == 3 then
     })
 
     tm.AddSciencePacks("brain-galactification", tm.post_promethium_sciences)
-
-    if mods["BrassTacksMk2"] then
-        tm.AddUnlock("waifugenesis", "clumsy-piston", "-ai-girlfriend")
-        tm.AddUnlock("waifugenesis", "clumsy-piston-inversion", "-ai-girlfriend")
-    end
 
     if mods["BrimStuffMk2"] and (mods["BrassTacksMk2"] or mods["IfNickelMk2"]) then
         data:extend({

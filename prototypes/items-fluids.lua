@@ -299,20 +299,6 @@ if mods["space-age"] then
         },
         {
           type = "item",
-          name = "weighted-blanket",
-          icon = "__LasingAroundMk2__/graphics/icons/weighted-blanket.png",
-          icon_size = 64,
-          subgroup = "inversion",
-          order = "e",
-          inventory_move_sound = item_sounds.plastic_inventory_move,
-          pick_sound = item_sounds.plastic_inventory_pickup,
-          drop_sound = item_sounds.plastic_inventory_move,
-          stack_size = 50,
-          default_import_location = "fulgora",
-          weight = 5*kg
-        },
-        {
-          type = "item",
           name = "ordinary-human-brain",
           icon = "__LasingAroundMk2__/graphics/icons/ordinary-human-brain.png",
           icon_size = 64,
@@ -498,6 +484,23 @@ if mods["space-age"] then
           drop_sound = item_sounds.metal_large_inventory_move,
           stack_size = 50,
           default_import_location = "nauvis",
+          weight = 5*kg
+        }
+      })
+    else
+      data:extend({
+        {
+          type = "item",
+          name = "weighted-blanket",
+          icon = "__LasingAroundMk2__/graphics/icons/weighted-blanket.png",
+          icon_size = 64,
+          subgroup = "inversion",
+          order = "e",
+          inventory_move_sound = item_sounds.plastic_inventory_move,
+          pick_sound = item_sounds.plastic_inventory_pickup,
+          drop_sound = item_sounds.plastic_inventory_move,
+          stack_size = 50,
+          default_import_location = "fulgora",
           weight = 5*kg
         }
       })
