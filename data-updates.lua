@@ -35,6 +35,11 @@ if mods["quality"] then
     if mods["Age-of-Production"] then
         data.raw.furnace["aop-salvager"].result_inventory_size = biggest_result_list
     end
+
+  rm.SortScrapProducts("scrap-recycling")
+  rm.SortScrapProducts("cerys-nuclear-scrap-recycling")
+  rm.SortScrapProducts("ancient-military-wreckage-recycling")
+  rm.SortScrapProducts("weird-alien-gizmo-recycling")
 end
 
 if mods["scrap-industry"] then
