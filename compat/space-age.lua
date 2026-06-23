@@ -40,8 +40,8 @@ if misc.starting_planet == "fulgora" then
 end
 
 if misc.difficulty > 1 then
-    rm.RemoveProduct("scrap-recycling", {type="item", name="holmium-ore", amount=1, probability=0.01})
-    rm.AddProduct("scrap-recycling", {type="item", name="weird-alien-gizmo", amount=1, probability=0.05})    
+    rm.RemoveProduct("scrap-recycling", {type="item", name="holmium-ore", amount=1, independent_probability=-1})
+    rm.AddProduct("scrap-recycling", {type="item", name="weird-alien-gizmo", amount=1, independent_probability=0.05})    
 
     rm.ReplaceIngredientProportional("recycler", "processing-unit", "scanner")
 
@@ -54,13 +54,13 @@ if misc.difficulty > 1 then
         tm.AddUnlock("scrap-recycling-productivity-4", {type="change-recipe-productivity", recipe="weird-alien-gizmo-recycling", change=0.1})
     end
 else
-    rm.AddProduct("scrap-recycling", {type="item", name="laser", amount=1, probability=0.01})
+    rm.AddProduct("scrap-recycling", {type="item", name="laser", amount=1, independent_probability=0.01})
 end
 
 rm.ReplaceIngredientProportional("spectroscope", "copper-plate", "superconductor", 0.5)
 
 if misc.difficulty == 3 then
-    --data.raw.recipe["superconductor"].category = "electronics-with-fluid"
+    --data.raw.recipe["superconductor"].categories={"electronics-with-fluid"}
     tm.AddUnlock("electromagnetic-plant", "cardinal-grammeter")
 
     rm.ReplaceIngredientProportional("electromagnetic-plant", "holmium-plate", "cardinal-grammeter", 0.1)
@@ -102,7 +102,7 @@ if settings.startup["planetfall-postgame-logistics"].value and misc.difficulty =
     rm.AddIngredient("extradimensional-cargo-wagon", mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
     rm.AddIngredient("extradimensional-fluid-wagon", mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
     rm.AddIngredient("extradimensional-cargo-bay", mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
-    rm.ReplaceIngredientProportional("extradimensional-cargo-bay", "supercapacitor", "cardinal-grammeter", 0.66)
+    rm.ReplaceIngredientProportional("extradimensional-cargo-bay", "supercapacitor", "cardinal-grammeter", 0.4)
 end
 
 --TUNER

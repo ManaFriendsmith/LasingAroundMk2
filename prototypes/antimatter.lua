@@ -307,7 +307,7 @@ local antimatter = {
       },
       reset_animation_when_frozen = true
     },
-    impact_category = "metal-large",
+    impact_category="metal-large",
     open_sound = {filename = "__base__/sound/open-close/reactor-open.ogg", volume = 0.5},
     close_sound = {filename = "__base__/sound/open-close/reactor-close.ogg", volume = 0.5},
     working_sound = {
@@ -327,7 +327,7 @@ local antimatter = {
       fuel_categories = {"antimatter"},
       fuel_inventory_size = 1
     },
-    energy_usage = "2MW",
+    energy_usage = "10MW",
     crafting_categories = {"conceptual-inversion"},
 }
 
@@ -378,7 +378,7 @@ data:extend({
         type = "recipe",
         name = "reference-car",
         localised_name = {"recipe-name.reference-car"},
-        category = "conceptual-inversion",
+        categories={"conceptual-inversion"},
         ingredients = {
             {type="item", name="ai-girlfriend", amount=1}
         },

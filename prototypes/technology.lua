@@ -551,6 +551,32 @@ if mods["space-age"] and misc.difficulty == 3 then
         },
         {
             type = "technology",
+            name = "lasingaround-easter-egg",
+            icon = "__base__/graphics/technology/automobilism.png",
+            icon_size = 256,
+            effects = {
+                {
+                    type = "unlock-recipe",
+                    recipe = "reference-car"
+                }
+            },
+            hidden = true,
+            hidden_in_factoriopedia = true,
+            prerequisites = {"promethium-science-pack"},
+            unit = {
+                count = 420,
+                time = 69,
+                ingredients = {
+                    {"promethium-science-pack", 1},
+                }
+            }
+        }
+    })
+
+    if mods["quality"] then
+        data:extend({
+            {
+            type = "technology",
             name = "brain-galactification",
             icon = "__LasingAroundMk2__/graphics/technology/brain-galactification.png",
             icon_size = 256,
@@ -579,32 +605,10 @@ if mods["space-age"] and misc.difficulty == 3 then
                     {"promethium-science-pack", 1},
                 }
             }
-        },
-        {
-            type = "technology",
-            name = "lasingaround-easter-egg",
-            icon = "__base__/graphics/technology/automobilism.png",
-            icon_size = 256,
-            effects = {
-                {
-                    type = "unlock-recipe",
-                    recipe = "reference-car"
-                }
-            },
-            hidden = true,
-            hidden_in_factoriopedia = true,
-            prerequisites = {"promethium-science-pack"},
-            unit = {
-                count = 420,
-                time = 69,
-                ingredients = {
-                    {"promethium-science-pack", 1},
-                }
-            }
         }
-    })
-
-    tm.AddSciencePacks("brain-galactification", tm.post_promethium_sciences)
+        })
+        tm.AddSciencePacks("brain-galactification", tm.post_promethium_sciences)
+    end
 
     if mods["BrimStuffMk2"] and (mods["BrassTacksMk2"] or mods["IfNickelMk2"]) then
         data:extend({

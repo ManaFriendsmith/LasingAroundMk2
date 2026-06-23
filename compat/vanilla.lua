@@ -173,7 +173,7 @@ if misc.difficulty > 1 then
 end
 
 if misc.difficulty == 3 then
-    data.raw.recipe["heat-pipe"].category = "crafting-with-fluid"
+    data.raw.recipe["heat-pipe"].categories={"crafting-with-fluid"}
     rm.AddIngredient("heat-pipe", "helium", 30)
 end
 

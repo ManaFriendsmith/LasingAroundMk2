@@ -84,8 +84,8 @@ if mods["LunarLandings"] then
     if misc.difficulty == 3 or (misc.difficulty == 2 and not mods["space-age"]) then
         rm.AddIngredient("ll-superposition-right-left", {type="item", name="laser", amount=1, ignored_by_stats=1})
         rm.AddIngredient("ll-superposition-up-down", {type="item", name="laser", amount=1, ignored_by_stats=1})
-        rm.AddProduct("ll-superposition-right-left", {type="item", name="laser", amount=1, probability=0.85, ignored_by_stats=1})
-        rm.AddProduct("ll-superposition-up-down", {type="item", name="laser", amount=1, probability=0.85, ignored_by_stats=1})
+        rm.AddProduct("ll-superposition-right-left", {type="item", name="laser", amount=1, independent_probability=0.85, ignored_by_stats=1})
+        rm.AddProduct("ll-superposition-up-down", {type="item", name="laser", amount=1, independent_probability=0.85, ignored_by_stats=1})
     end
 
     if data.raw.item["tracker"] then
@@ -267,7 +267,7 @@ if mods["castra"] then
     end
 
     if mods["BrassTacksMk2"] then
-        rm.AddProduct("custom-ancient-military-wreckage-recycling", {type="item", name="laser", amount=1, probability=0.005})
+        rm.AddProduct("custom-ancient-military-wreckage-recycling", {type="item", name="laser", amount=1, independent_probability=0.005})
     end
 
     SetItemCost("millerite", 1)
@@ -334,9 +334,9 @@ if mods["Cerys-Moon-of-Fulgora"] then
 
     if misc.difficulty > 1 then
         tm.AddUnlock("cerys-nuclear-scrap-recycling", "weird-alien-gizmo-recycling")
-        rm.AddProduct("cerys-nuclear-scrap-recycling", {type="item", name="weird-alien-gizmo", amount=1, probability=0.02})
+        rm.AddProduct("cerys-nuclear-scrap-recycling", {type="item", name="weird-alien-gizmo", amount=1, independent_probability=0.02})
     else
-        rm.AddProduct("cerys-nuclear-scrap-recycling", {type="item", name="laser", amount=1, probability=0.005})
+        rm.AddProduct("cerys-nuclear-scrap-recycling", {type="item", name="laser", amount=1, independent_probability=0.005})
     end
 end
 

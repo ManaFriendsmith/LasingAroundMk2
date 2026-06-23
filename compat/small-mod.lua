@@ -47,20 +47,20 @@ if mods["scrap-industry"] then
     ScrapIndustry.recipes["ordinary-human-brain-inversion"] = {ignore=true}
 
     ScrapIndustry.recipes["spectroscopic-oil-filtration"] = {ignore=true}
-    rm.AddProduct("spectroscopic-oil-filtration", {type="item", name="circuit-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
+    rm.AddProduct("spectroscopic-oil-filtration", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
     if mods["space-age"] then
-        rm.AddProduct("spectroscopic-oil-filtration", {type="item", name="holmium-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-oil-filtration", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
         ScrapIndustry.recipes["spectroscopic-holmium-processing"] = {ignore=true}
-        rm.AddProduct("spectroscopic-holmium-processing", {type="item", name="circuit-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
-        rm.AddProduct("spectroscopic-holmium-processing", {type="item", name="holmium-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-holmium-processing", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-holmium-processing", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
 
         ScrapIndustry.recipes["spectroscopic-bioflux-processing"] = {ignore=true}
-        rm.AddProduct("spectroscopic-bioflux-processing", {type="item", name="circuit-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
-        rm.AddProduct("spectroscopic-bioflux-processing", {type="item", name="holmium-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-bioflux-processing", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-bioflux-processing", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
 
         ScrapIndustry.recipes["spectroscopic-hydrogen-sulfide-electrolysis"] = {ignore=true}
-        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis", {type="item", name="circuit-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
-        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis", {type="item", name="holmium-scrap", amount=1, probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
     end
 
     if mods["BrassTacksMk2"] then
@@ -82,4 +82,14 @@ if mods["scrap-industry"] then
         ScrapIndustry.items["scanner"].scale = ScrapIndustry.UNCOMMON
     end
 
+end
+
+if mods["pf-beacon-rework"] and misc.difficulty == 3 and mods["space-age"] then
+    rm.ReplaceIngredientProportional("overclocked-speed-module", "processing-unit", "ai-girlfriend")
+    rm.AddPrerequisite("overclocked-speed-module", "waifugenesis")
+    rm.ReplaceIngredientProportional("overclocked-efficiency-module", "processing-unit", mods["IfNickel"] and "perpendicular-processor" or "logic-deregulator")
+    rm.AddPrerequisite("overclocked-efficiency-module", mods["IfNickel"] and "geometry-abolition" or "laissez-faire-mathematics")
+    rm.ReplaceIngredientProportional("overclocked-quality-module", "processing-unit", "random-number-nullifier")
+    rm.AddPrerequisite("overclocked-quality-module", "probability-manipulation")
+    tm.AddSciencePack("overclocked-quality-module", "metallurgic-science-pack")
 end

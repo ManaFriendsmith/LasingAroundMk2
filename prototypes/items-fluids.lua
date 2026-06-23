@@ -264,7 +264,7 @@ if mods["space-age"] then
               items_per_trigger = 1,
               trigger = data.raw.projectile["grenade"].action
             },
-          fuel_category = "antimatter",
+          fuel_category="antimatter",
           fuel_value = "500MJ",
           fuel_acceleration_multiplier = 4,
           fuel_top_speed_multiplier = 1.5

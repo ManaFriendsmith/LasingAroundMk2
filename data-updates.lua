@@ -9,9 +9,9 @@ require("compat/bz")
 require("compat/mod-planets")
 require("compat.small-mod")
 
-if mods["quality"] then
+if mods["recycler"] then
     rm.FixStackingRecycling()
-    require("__quality__/data-updates")
+    require("__recycler__/data-updates")
 
     if data.raw.item["dormant-newtronic-chip"] then
         local pulse_recycling = table.deepcopy(data.raw.recipe["dormant-newtronic-chip-recycling"])
@@ -25,9 +25,11 @@ if mods["quality"] then
 
     local biggest_result_list = data.raw.furnace.recycler.result_inventory_size
     for k, v in pairs(data.raw.recipe) do
-      if v.category == "recycling" or v.category == "recycling-or-hand-crafting" then
-        if v.results and #v.results > biggest_result_list then
-          biggest_result_list = #v.results
+      for k2, v2 in pairs(v.categories or {"crafting"}) do
+        if v2 == "recycling" or v2 == "recycling-or-hand-crafting" then
+          if v.results and #v.results > biggest_result_list then
+            biggest_result_list = #v.results
+          end
         end
       end
     end

@@ -25,7 +25,15 @@ local function get_canonical_recipe(item)
   --if exactly one valid recipe produces the item with no byproducts, use that.
   local candidate = nil
   for k, recipe in pairs(data.raw.recipe) do
-      if recipe.results and #recipe.results == 1 and recipe.category ~= "recycling" and recipe.category ~= "recycling-or-hand-crafting" then
+      if recipe.results and #recipe.results == 1 then
+        local is_recycle = false
+        for k2, v2 in pairs(recipe.categories or {"crafting"}) do
+          if v2 == "recycling" then
+            is_recycle = false
+            break
+          end
+        end
+        if is_recycle then
           local ok = false
           local solids = 0
           for k2, product in pairs(recipe.results) do --not taking risks if someone uses weird keys for their tables.
@@ -43,6 +51,7 @@ local function get_canonical_recipe(item)
                   candidate = recipe.name
               end
           end
+        end
       end
   end
   if candidate then return candidate end
@@ -123,8 +132,8 @@ local function GetRecipeCost(recipe)
         a = (solid_products[1].amount_min + solid_products[1].amount_max) / 2
       end
 
-      if solid_products[1].probability then
-        a = a * solid_products[1].probability
+      if solid_products[1].independent_probability then
+        a = a * solid_products[1].independent_probability
       end
 
       --remove catalysts
@@ -322,7 +331,7 @@ for name, recipe in pairs(data.raw.recipe) do
           remove_extraneous_fluids(recipe, lasdata.remove_fluids_except)
         end
         new_recipes_helium[name] = lasdata.helium or 1
-        recipe.category = "laser-milling-exclusive"
+        recipe.categories={"laser-milling-exclusive"}
         if lasdata.multiply then
           new_recipes_multipliers[recipe_copy.name] = lasdata.multiply
         end
@@ -337,13 +346,10 @@ for name, recipe in pairs(data.raw.recipe) do
         end
         if lasdata.convert then
           recipe_copy.name = name .. "-in-orbit"
-          recipe_copy.category = lasdata.se_variant
-          recipe_copy.additional_categories = nil
-          recipe.additional_categories = nil
+          recipe_copy.categories = lasdata.se_variant
         else
           recipe_copy.name = name .. "-in-laser-mill"
-          recipe_copy.category = "laser-milling"
-          recipe_copy.additional_categories = nil
+          recipe_copy.categories={"laser-milling"}
           new_recipes_helium[recipe_copy.name] = lasdata.helium or 1
           if lasdata.multiply then
             new_recipes_multipliers[recipe_copy.name] = lasdata.multiply

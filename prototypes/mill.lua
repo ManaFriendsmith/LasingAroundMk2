@@ -1,7 +1,7 @@
 local util = require("util")
 local item_sounds = require("__base__/prototypes/item_sounds")
 
-local lasermill_pipes = assembler2pipepictures()
+local lasermill_pipes = table.deepcopy(require("__base__/prototypes/entity/assembler-pictures").assembler2pipepictures)
 lasermill_pipes.south =
 {
   filename = "__LasingAroundMk2__/graphics/entity/laser-mill/lm-pipe.png",
