@@ -11,17 +11,7 @@ require("compat.small-mod")
 
 if mods["recycler"] then
     rm.FixStackingRecycling()
-    require("__recycler__/data-updates")
-
-    if data.raw.item["dormant-newtronic-chip"] then
-        local pulse_recycling = table.deepcopy(data.raw.recipe["dormant-newtronic-chip-recycling"])
-        pulse_recycling.icons = data.raw.recipe["pulsing-newtronic-chip-recycling"].icons
-        pulse_recycling.localised_name = data.raw.recipe["pulsing-newtronic-chip-recycling"].localised_name
-        pulse_recycling.name = "pulsing-newtronic-chip-recycling"
-        pulse_recycling.ingredients = {{type="item", name="pulsing-newtronic-chip", amount=1}}
-        data:extend({pulse_recycling})
-        data.raw.item["pulsing-newtronic-chip"].auto_recycle = false
-    end
+    rm.RegenerateRecyclingRecipes()
 
     local biggest_result_list = data.raw.furnace.recycler.result_inventory_size
     for k, v in pairs(data.raw.recipe) do

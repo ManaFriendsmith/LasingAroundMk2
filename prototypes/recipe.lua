@@ -1081,6 +1081,23 @@ if mods["space-age"] then
             energy_required = 20,
             enabled = false
         },
+        {
+            type = "recipe",
+            name = "pulsing-newtronic-chip-conversion",
+            commentary = "please add recycle_to_ingredients_of on item prototypes",
+            recycle_to_ingredients_of = "dormant-newtronic-chip",
+            hidden=true,
+            hidden_in_factoriopedia=true,
+            categories={"electromagnetics"},
+            ingredients = {
+                {type="item", name="dormant-newtronic-chip", amount=1}
+            },
+            results = {
+                {type="item", name="pulsing-newtronic-chip", amount=1}
+            },
+            energy_required = 20,
+            enabled = false
+        },
     })
 
     if mods["quality"] then
