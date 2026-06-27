@@ -355,7 +355,8 @@ data:extend({
         pick_sound = item_sounds.reactor_inventory_pickup,
         drop_sound = item_sounds.reactor_inventory_move,
         stack_size = 10,
-        weight = 200*kg
+        weight = 200*kg,
+        default_import_location = "fulgora"
     },
     {
         type = "item",

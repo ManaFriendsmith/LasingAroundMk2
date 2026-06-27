@@ -339,7 +339,7 @@ if mods["space-age"] then
           pick_sound = item_sounds.module_inventory_pickup,
           drop_sound = item_sounds.module_inventory_move,
           stack_size = 50,
-          default_import_location = "gleba",
+          default_import_location = "fulgora",
           weight = 5*kg
         },
         {
