@@ -25,6 +25,7 @@ local lasermill = {
   crafting_categories = {"laser-assembling", "laser-milling", "laser-milling-exclusive"},
   crafting_speed = 2,
   heating_energy = mods["space-age"] and "150kW" or nil,
+  use_mirroring = true,
   energy_source =
   {
     type = "electric",
