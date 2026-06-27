@@ -78,7 +78,7 @@ end
 --AQUILO
 
 rm.AddIngredient("fusion-reactor", "laser", 100)
-rm.ReplaceIngredientProportional("fusion-power-cell", "ammonia", "helium", 0.25)
+rm.AddIngredient("fusion-power-cell", "helium", 25)
 rm.ReplaceIngredientProportional("solid-fuel-from-ammonia", "crude-oil", "filtered-oil")
 
 if misc.difficulty == 3 then
