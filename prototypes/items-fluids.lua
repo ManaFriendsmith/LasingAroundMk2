@@ -355,7 +355,7 @@ if mods["space-age"] then
           stack_size = 10,
           default_import_location = "nauvis",
           weight = 10*kg,
-          spoil_ticks = 4.5 * minute,
+          spoil_ticks = 2.5 * minute,
           spoil_result = "pulsing-newtronic-chip"
         },
         {
