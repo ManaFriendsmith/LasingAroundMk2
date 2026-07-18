@@ -4,10 +4,10 @@ if data.raw.item["antimatter-power-cell"] then
             if energy_source.fuel_categories then
                 table.insert(energy_source.fuel_categories, "antimatter")
             elseif energy_source.fuel_category then
-                energy_source.fuel_categories = {energy_source.fuel_category, "antimatter"}
+                energy_source.fuel_categories = { energy_source.fuel_category, "antimatter" }
                 energy_source.fuel_category = nil
             else
-                energy_source.fuel_categories = {"antimatter"}
+                energy_source.fuel_categories = { "antimatter" }
             end
         end
     end
@@ -30,9 +30,9 @@ if data.raw.item["antimatter-power-cell"] then
 end
 
 if not mods["scrap-industry"] then
-  if global_laser_mill_reserved then
-      log("laser mill reserved by: " .. serpent.line(global_laser_mill_reserved))
-  else
-      require("lasermill-recipe-generator")
-  end
+    if global_laser_mill_reserved then
+        log("laser mill reserved by: " .. serpent.line(global_laser_mill_reserved))
+    else
+        require("lasermill-recipe-generator")
+    end
 end

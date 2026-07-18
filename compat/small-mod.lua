@@ -20,47 +20,58 @@ if mods["deadlock-beltboxes-loaders"] then
 end
 
 if mods["scrap-industry"] then
-    ScrapIndustry.items["laser"] = {scrap={"circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.02}
-    ScrapIndustry.items["scanner"] = {scrap={"circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.02}
-    ScrapIndustry.items["tracker"] = {scrap={"circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.05}
-    ScrapIndustry.items["cardinal-grammeter"] = {scrap={"circuit-scrap", "holmium-scrap"}, scale=ScrapIndustry.RARE, failrate=0.05}
-    ScrapIndustry.items["weird-alien-gizmo"] = {scrap={"circuit-scrap"}, scale=ScrapIndustry.COMMON, failrate=0.01}
-    ScrapIndustry.items["micron-tolerance-components"] = {scrap={"invar-scrap"}, scale=ScrapIndustry.CHEAP, failrate=0.01}
+    ScrapIndustry.items["laser"] = { scrap = { "circuit-scrap" }, scale = ScrapIndustry.RARE, failrate = 0.02 }
+    ScrapIndustry.items["scanner"] = { scrap = { "circuit-scrap" }, scale = ScrapIndustry.RARE, failrate = 0.02 }
+    ScrapIndustry.items["tracker"] = { scrap = { "circuit-scrap" }, scale = ScrapIndustry.RARE, failrate = 0.05 }
+    ScrapIndustry.items["cardinal-grammeter"] = { scrap = { "circuit-scrap", "holmium-scrap" }, scale = ScrapIndustry
+    .RARE, failrate = 0.05 }
+    ScrapIndustry.items["weird-alien-gizmo"] = { scrap = { "circuit-scrap" }, scale = ScrapIndustry.COMMON, failrate = 0.01 }
+    ScrapIndustry.items["micron-tolerance-components"] = { scrap = { "invar-scrap" }, scale = ScrapIndustry.CHEAP, failrate = 0.01 }
 
-    ScrapIndustry.items["ai-girlfriend"] = {scrap={"circuit-scrap", data.raw.item["mech-scrap"] and "mech-scrap" or "steel-scrap"}, scale=ScrapIndustry.EPIC, failrate=0.01}
-    ScrapIndustry.items["random-number-nullifier"] = {scrap={"circuit-scrap", data.raw.item["mech-scrap"] and "mech-scrap" or "steel-scrap" }, scale=ScrapIndustry.RARE, failrate=0.01}
-    ScrapIndustry.items["perpendicular-processor"] = {scrap={"circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.01}
-    ScrapIndustry.items["logic-deregulator"] = {scrap={"circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.01}
-    ScrapIndustry.items["pulsing-newtronic-chip"] = {scrap={"circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=-1}
+    ScrapIndustry.items["ai-girlfriend"] = { scrap = { "circuit-scrap", data.raw.item["mech-scrap"] and "mech-scrap" or "steel-scrap" }, scale =
+    ScrapIndustry.EPIC, failrate = 0.01 }
+    ScrapIndustry.items["random-number-nullifier"] = { scrap = { "circuit-scrap", data.raw.item["mech-scrap"] and "mech-scrap" or "steel-scrap" }, scale =
+    ScrapIndustry.RARE, failrate = 0.01 }
+    ScrapIndustry.items["perpendicular-processor"] = { scrap = { "circuit-scrap" }, scale = ScrapIndustry.RARE, failrate = 0.01 }
+    ScrapIndustry.items["logic-deregulator"] = { scrap = { "circuit-scrap" }, scale = ScrapIndustry.RARE, failrate = 0.01 }
+    ScrapIndustry.items["pulsing-newtronic-chip"] = { scrap = { "circuit-scrap" }, scale = ScrapIndustry.RARE, failrate = -1 }
 
-    ScrapIndustry.recipes["art-rotators"] = {ignore=true}
-    ScrapIndustry.recipes["art-rotator-inversion"] = {ignore=true}
-    ScrapIndustry.recipes["pentapod-gatekeeper"] = {ignore=true}
-    ScrapIndustry.recipes["pentapod-gatekeeper-inversion"] = {ignore=true}
-    ScrapIndustry.recipes["high-density-chaos"] = {ignore=true}
-    ScrapIndustry.recipes["high-density-chaos-inversion"] = {ignore=true}
-    ScrapIndustry.recipes["weighted-blanket"] = {ignore=true}
-    ScrapIndustry.recipes["weighted-blanket-inversion"] = {ignore=true}
-    ScrapIndustry.recipes["clumsy-piston"] = {ignore=true}
-    ScrapIndustry.recipes["clumsy-piston-inversion"] = {ignore=true}
-    ScrapIndustry.recipes["ordinary-human-brain"] = {ignore=true}
-    ScrapIndustry.recipes["ordinary-human-brain-inversion"] = {ignore=true}
+    ScrapIndustry.recipes["art-rotators"] = { ignore = true }
+    ScrapIndustry.recipes["art-rotator-inversion"] = { ignore = true }
+    ScrapIndustry.recipes["pentapod-gatekeeper"] = { ignore = true }
+    ScrapIndustry.recipes["pentapod-gatekeeper-inversion"] = { ignore = true }
+    ScrapIndustry.recipes["high-density-chaos"] = { ignore = true }
+    ScrapIndustry.recipes["high-density-chaos-inversion"] = { ignore = true }
+    ScrapIndustry.recipes["weighted-blanket"] = { ignore = true }
+    ScrapIndustry.recipes["weighted-blanket-inversion"] = { ignore = true }
+    ScrapIndustry.recipes["clumsy-piston"] = { ignore = true }
+    ScrapIndustry.recipes["clumsy-piston-inversion"] = { ignore = true }
+    ScrapIndustry.recipes["ordinary-human-brain"] = { ignore = true }
+    ScrapIndustry.recipes["ordinary-human-brain-inversion"] = { ignore = true }
 
-    ScrapIndustry.recipes["spectroscopic-oil-filtration"] = {ignore=true}
-    rm.AddProduct("spectroscopic-oil-filtration", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
+    ScrapIndustry.recipes["spectroscopic-oil-filtration"] = { ignore = true }
+    rm.AddProduct("spectroscopic-oil-filtration",
+        { type = "item", name = "circuit-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
     if mods["space-age"] then
-        rm.AddProduct("spectroscopic-oil-filtration", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
-        ScrapIndustry.recipes["spectroscopic-holmium-processing"] = {ignore=true}
-        rm.AddProduct("spectroscopic-holmium-processing", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
-        rm.AddProduct("spectroscopic-holmium-processing", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
+        rm.AddProduct("spectroscopic-oil-filtration",
+            { type = "item", name = "holmium-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
+        ScrapIndustry.recipes["spectroscopic-holmium-processing"] = { ignore = true }
+        rm.AddProduct("spectroscopic-holmium-processing",
+            { type = "item", name = "circuit-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
+        rm.AddProduct("spectroscopic-holmium-processing",
+            { type = "item", name = "holmium-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
 
-        ScrapIndustry.recipes["spectroscopic-bioflux-processing"] = {ignore=true}
-        rm.AddProduct("spectroscopic-bioflux-processing", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
-        rm.AddProduct("spectroscopic-bioflux-processing", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
+        ScrapIndustry.recipes["spectroscopic-bioflux-processing"] = { ignore = true }
+        rm.AddProduct("spectroscopic-bioflux-processing",
+            { type = "item", name = "circuit-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
+        rm.AddProduct("spectroscopic-bioflux-processing",
+            { type = "item", name = "holmium-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
 
-        ScrapIndustry.recipes["spectroscopic-hydrogen-sulfide-electrolysis"] = {ignore=true}
-        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis", {type="item", name="circuit-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
-        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis", {type="item", name="holmium-scrap", amount=1, independent_probability=0.01, ignored_by_productivity=1})
+        ScrapIndustry.recipes["spectroscopic-hydrogen-sulfide-electrolysis"] = { ignore = true }
+        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis",
+            { type = "item", name = "circuit-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
+        rm.AddProduct("spectroscopic-hydrogen-sulfide-electrolysis",
+            { type = "item", name = "holmium-scrap", amount = 1, independent_probability = 0.01, ignored_by_productivity = 1 })
     end
 
     if mods["BrassTacksMk2"] then
@@ -81,14 +92,15 @@ if mods["scrap-industry"] then
         ScrapIndustry.items["laser"].scale = ScrapIndustry.UNCOMMON
         ScrapIndustry.items["scanner"].scale = ScrapIndustry.UNCOMMON
     end
-
 end
 
 if mods["pf-beacon-rework"] and misc.difficulty == 3 and mods["space-age"] then
     rm.ReplaceIngredientProportional("overclocked-speed-module", "processing-unit", "ai-girlfriend")
     rm.AddPrerequisite("overclocked-speed-module", "waifugenesis")
-    rm.ReplaceIngredientProportional("overclocked-efficiency-module", "processing-unit", mods["IfNickel"] and "perpendicular-processor" or "logic-deregulator")
-    rm.AddPrerequisite("overclocked-efficiency-module", mods["IfNickel"] and "geometry-abolition" or "laissez-faire-mathematics")
+    rm.ReplaceIngredientProportional("overclocked-efficiency-module", "processing-unit",
+        mods["IfNickel"] and "perpendicular-processor" or "logic-deregulator")
+    rm.AddPrerequisite("overclocked-efficiency-module",
+        mods["IfNickel"] and "geometry-abolition" or "laissez-faire-mathematics")
     rm.ReplaceIngredientProportional("overclocked-quality-module", "processing-unit", "random-number-nullifier")
     rm.AddPrerequisite("overclocked-quality-module", "probability-manipulation")
     tm.AddSciencePack("overclocked-quality-module", "metallurgic-science-pack")

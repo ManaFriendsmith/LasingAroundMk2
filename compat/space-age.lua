@@ -40,21 +40,26 @@ if misc.starting_planet == "fulgora" then
 end
 
 if misc.difficulty > 1 then
-    rm.RemoveProduct("scrap-recycling", {type="item", name="holmium-ore", amount=1, independent_probability=-1})
-    rm.AddProduct("scrap-recycling", {type="item", name="weird-alien-gizmo", amount=1, independent_probability=0.05})    
+    rm.RemoveProduct("scrap-recycling", { type = "item", name = "holmium-ore", amount = 1, independent_probability = -1 })
+    rm.AddProduct("scrap-recycling", { type = "item", name = "weird-alien-gizmo", amount = 1, independent_probability = 0.05 })
 
     rm.ReplaceIngredientProportional("recycler", "processing-unit", "scanner")
 
     tm.AddUnlock("recycling", "weird-alien-gizmo-recycling")
-    tm.AddUnlock("scrap-recycling-productivity", {type="change-recipe-productivity", recipe="weird-alien-gizmo-recycling", change=0.1})
+    tm.AddUnlock("scrap-recycling-productivity",
+        { type = "change-recipe-productivity", recipe = "weird-alien-gizmo-recycling", change = 0.1 })
     if misc.starting_planet == "fulgora" then
-        tm.AddUnlock("scrap-recycling-productivity-1", {type="change-recipe-productivity", recipe="weird-alien-gizmo-recycling", change=0.1})
-        tm.AddUnlock("scrap-recycling-productivity-2", {type="change-recipe-productivity", recipe="weird-alien-gizmo-recycling", change=0.1})
-        tm.AddUnlock("scrap-recycling-productivity-3", {type="change-recipe-productivity", recipe="weird-alien-gizmo-recycling", change=0.1})
-        tm.AddUnlock("scrap-recycling-productivity-4", {type="change-recipe-productivity", recipe="weird-alien-gizmo-recycling", change=0.1})
+        tm.AddUnlock("scrap-recycling-productivity-1",
+            { type = "change-recipe-productivity", recipe = "weird-alien-gizmo-recycling", change = 0.1 })
+        tm.AddUnlock("scrap-recycling-productivity-2",
+            { type = "change-recipe-productivity", recipe = "weird-alien-gizmo-recycling", change = 0.1 })
+        tm.AddUnlock("scrap-recycling-productivity-3",
+            { type = "change-recipe-productivity", recipe = "weird-alien-gizmo-recycling", change = 0.1 })
+        tm.AddUnlock("scrap-recycling-productivity-4",
+            { type = "change-recipe-productivity", recipe = "weird-alien-gizmo-recycling", change = 0.1 })
     end
 else
-    rm.AddProduct("scrap-recycling", {type="item", name="laser", amount=1, independent_probability=0.01})
+    rm.AddProduct("scrap-recycling", { type = "item", name = "laser", amount = 1, independent_probability = 0.01 })
 end
 
 rm.ReplaceIngredientProportional("spectroscope", "copper-plate", "superconductor", 0.5)
@@ -95,20 +100,23 @@ if misc.difficulty == 3 then
 end
 
 if settings.startup["planetfall-postgame-logistics"].value and misc.difficulty == 3 then
-    
     if data.raw.item["quantum-encabulator"] then
         rm.ReplaceIngredientProportional("superposition-splitter", "quantum-processor", "random-number-nullifier")
     end
-    rm.AddIngredient("extradimensional-cargo-wagon", mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
-    rm.AddIngredient("extradimensional-fluid-wagon", mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
-    rm.AddIngredient("extradimensional-cargo-bay", mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
+    rm.AddIngredient("extradimensional-cargo-wagon",
+        mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
+    rm.AddIngredient("extradimensional-fluid-wagon",
+        mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
+    rm.AddIngredient("extradimensional-cargo-bay",
+        mods["IfNickelMk2"] and "perpendicular-processor" or "logic-deregulator", 20)
     rm.ReplaceIngredientProportional("extradimensional-cargo-bay", "supercapacitor", "cardinal-grammeter", 0.4)
 end
 
 --TUNER
 if misc.difficulty == 3 and tune_up_data then
     if mods["IfNickelMk2"] then
-        tune_up_data.ReplaceIngredientProportional("efficiency-module-3", "quantum-processor", "perpendicular-processor", 1)
+        tune_up_data.ReplaceIngredientProportional("efficiency-module-3", "quantum-processor", "perpendicular-processor",
+            1)
     else
         tune_up_data.ReplaceIngredientProportional("efficiency-module-3", "quantum-processor", "logic-deregulator", 1)
     end

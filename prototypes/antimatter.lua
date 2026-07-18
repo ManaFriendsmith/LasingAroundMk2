@@ -25,17 +25,17 @@ local blasting = 0
 
 --lower part, upper part
 local keyframes = {
-    {4, 3},
-    {1, 1},
-    {5, 5},
-    {7, 4},
-    {2, 1},
-    {2, 5},
-    {6, 2},
-    {1, 1},
-    {5, 4},
-    {7, 2},
-    {8, 3},
+    { 4, 3 },
+    { 1, 1 },
+    { 5, 5 },
+    { 7, 4 },
+    { 2, 1 },
+    { 2, 5 },
+    { 6, 2 },
+    { 1, 1 },
+    { 5, 4 },
+    { 7, 2 },
+    { 8, 3 },
 }
 
 local next_keyframe = 1
@@ -78,7 +78,7 @@ while next_keyframe <= #keyframes do
             table.insert(lower_blast_frames, lower_position + 8)
             table.insert(orb_frames, 3)
         end
-        
+
         blasting = blasting - 1
         if blasting == 0 then
             next_keyframe = next_keyframe + 1
@@ -129,12 +129,12 @@ while next_keyframe <= #keyframes do
             if (lower_position == lower_target) and (upper_position == upper_target) then
                 blasting = 6
                 table.insert(accents,
-                {
-                    sound = {filename = "__pf-sa-compat__/sound/zap.ogg", volume = 0.4},
-                    frame = current_frame_index + 1, --the blasting begins next frame
-                    audible_distance_modifier = 0.6
-                }
-            )
+                    {
+                        sound = { filename = "__pf-sa-compat__/sound/zap.ogg", volume = 0.4 },
+                        frame = current_frame_index + 1, --the blasting begins next frame
+                        audible_distance_modifier = 0.6
+                    }
+                )
             end
         end
         table.insert(lower_frames, lower_position)
@@ -151,8 +151,8 @@ local antimatter = {
     type = "assembling-machine",
     name = "antiparticle-decelerator",
     icon = "__LasingAroundMk2__/graphics/icons/antiparticle-decelerator.png",
-    flags = {"placeable-neutral","placeable-player", "player-creation"},
-    minable = {mining_time = 0.2, result = "antiparticle-decelerator"},
+    flags = { "placeable-neutral", "placeable-player", "player-creation" },
+    minable = { mining_time = 0.2, result = "antiparticle-decelerator" },
     fast_replaceable_group = "antiparticle-decelerator",
     max_health = 300,
     corpse = "electromagnetic-plant-remnants",
@@ -161,159 +161,159 @@ local antimatter = {
     circuit_connector = circuit_connector_definitions.create_vector(
         universal_connector_template,
         {
-            { variation = 26, main_offset = util.by_pixel(40, 32), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
-            { variation = 26, main_offset = util.by_pixel(40, 32), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
-            { variation = 26, main_offset = util.by_pixel(40, 32), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
-            { variation = 26, main_offset = util.by_pixel(40, 32), shadow_offset = util.by_pixel(35, 31), show_shadow = true }
+            { variation = 27, main_offset = util.by_pixel(32, 30), shadow_offset = util.by_pixel(27, 29), show_shadow = true },
+            { variation = 27, main_offset = util.by_pixel(32, 30), shadow_offset = util.by_pixel(27, 29), show_shadow = true },
+            { variation = 27, main_offset = util.by_pixel(32, 30), shadow_offset = util.by_pixel(27, 29), show_shadow = true },
+            { variation = 27, main_offset = util.by_pixel(32, 30), shadow_offset = util.by_pixel(27, 29), show_shadow = true }
         }
     ),
-    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+    selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
     damaged_trigger_effect = data.raw["assembling-machine"]["electromagnetic-plant"].damaged_trigger_effect,
     module_slots = 2,
-    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
+    allowed_effects = { "consumption", "speed", "productivity", "pollution", "quality" },
     graphics_set = {
-      idle_animation = {
-        layers = {
-            {
-                filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-lower.png",
-                width = 192,
-                height = 192,
-                frame_count = 8,
-                line_length = 8,
-                frame_sequence = lower_frames,
-                animation_speed = 0.5,
-                max_advance = 1,
-                scale = 0.5    
-            },
-            {
-                filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-upper.png",
-                width = 192,
-                height = 192,
-                frame_count = 5,
-                line_length = 5,
-                frame_sequence = upper_frames,
-                animation_speed = 0.5,
-                max_advance = 1,
-                scale = 0.5    
-            },
-            {
-                filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-shadow.png",
-                width = 292,
-                height = 192,
-                draw_as_shadow = true,
-                shift = {25/32, 0},
-                frame_count = 1,
-                line_length = 1,
-                repeat_count = current_frame_index - 1,
-                animation_speed = 0.5,
-                max_advance = 1,
-                scale = 0.5
+        idle_animation = {
+            layers = {
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-lower.png",
+                    width = 192,
+                    height = 192,
+                    frame_count = 8,
+                    line_length = 8,
+                    frame_sequence = lower_frames,
+                    animation_speed = 0.5,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-upper.png",
+                    width = 192,
+                    height = 192,
+                    frame_count = 5,
+                    line_length = 5,
+                    frame_sequence = upper_frames,
+                    animation_speed = 0.5,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-shadow.png",
+                    width = 292,
+                    height = 192,
+                    draw_as_shadow = true,
+                    shift = { 25 / 32, 0 },
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = current_frame_index - 1,
+                    animation_speed = 0.5,
+                    max_advance = 1,
+                    scale = 0.5
+                }
             }
-        }
-      },
-      animation = {
-        layers = {
-          {
-            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-lower.png",
+        },
+        animation = {
+            layers = {
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-lower.png",
+                    width = 192,
+                    height = 192,
+                    frame_count = 8,
+                    line_length = 8,
+                    frame_sequence = lower_frames,
+                    animation_speed = 0.5,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-orb.png",
+                    width = 192,
+                    height = 192,
+                    frame_count = 3,
+                    line_length = 3,
+                    frame_sequence = orb_frames,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-lower-blast.png",
+                    width = 192,
+                    height = 192,
+                    frame_count = 17,
+                    line_length = 8,
+                    frame_sequence = lower_blast_frames,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-upper-blast.png",
+                    width = 192,
+                    height = 192,
+                    frame_count = 11,
+                    line_length = 5,
+                    frame_sequence = upper_blast_frames,
+                    animation_speed = 0.5,
+                    draw_as_glow = true,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-upper.png",
+                    width = 192,
+                    height = 192,
+                    frame_count = 5,
+                    line_length = 5,
+                    frame_sequence = upper_frames,
+                    animation_speed = 0.5,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-big-glow.png",
+                    width = 768,
+                    height = 768,
+                    frame_count = 3,
+                    line_length = 3,
+                    frame_sequence = orb_frames,
+                    animation_speed = 0.5,
+                    draw_as_light = true,
+                    max_advance = 1,
+                    scale = 0.5
+                },
+                {
+                    filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-shadow.png",
+                    width = 292,
+                    height = 192,
+                    draw_as_shadow = true,
+                    shift = { 25 / 32, 0 },
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = current_frame_index - 1,
+                    animation_speed = 0.5,
+                    max_advance = 1,
+                    scale = 0.5
+                }
+            }
+        },
+        frozen_patch = {
+            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-frozen.png",
             width = 192,
             height = 192,
-            frame_count = 8,
-            line_length = 8,
-            frame_sequence = lower_frames,
-            animation_speed = 0.5,
-            max_advance = 1,
-            scale = 0.5    
-          },
-          {
-            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-orb.png",
-            width = 192,
-            height = 192,
-            frame_count = 3,
-            line_length = 3,
-            frame_sequence = orb_frames,
-            animation_speed = 0.5,
-            draw_as_glow = true,
-            max_advance = 1,
-            scale = 0.5    
-          },
-          {
-            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-lower-blast.png",
-            width = 192,
-            height = 192,
-            frame_count = 17,
-            line_length = 8,
-            frame_sequence = lower_blast_frames,
-            animation_speed = 0.5,
-            draw_as_glow = true,
-            max_advance = 1,
-            scale = 0.5    
-          },
-          {
-            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-upper-blast.png",
-            width = 192,
-            height = 192,
-            frame_count = 11,
-            line_length = 5,
-            frame_sequence = upper_blast_frames,
-            animation_speed = 0.5,
-            draw_as_glow = true,
-            max_advance = 1,
-            scale = 0.5    
-          },
-          {
-            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-upper.png",
-            width = 192,
-            height = 192,
-            frame_count = 5,
-            line_length = 5,
-            frame_sequence = upper_frames,
-            animation_speed = 0.5,
-            max_advance = 1,
-            scale = 0.5    
-          },
-          {
-            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-big-glow.png",
-            width = 768,
-            height = 768,
-            frame_count = 3,
-            line_length = 3,
-            frame_sequence = orb_frames,
-            animation_speed = 0.5,
-            draw_as_light = true,
-            max_advance = 1,
-            scale = 0.5    
-          },
-          {
-            filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-shadow.png",
-            width = 292,
-            height = 192,
-            draw_as_shadow = true,
-            shift = {25/32, 0},
-            frame_count = 1,
-            line_length = 1,
-            repeat_count = current_frame_index - 1,
-            animation_speed = 0.5,
-            max_advance = 1,
             scale = 0.5
-          }
-        }
-      },
-      frozen_patch = {
-          filename = "__LasingAroundMk2__/graphics/entity/antiparticle-decelerator/ad-frozen.png",
-          width = 192,
-          height = 192,
-          scale = 0.5
-      },
-      reset_animation_when_frozen = true
+        },
+        reset_animation_when_frozen = true
     },
-    impact_category="metal-large",
-    open_sound = {filename = "__base__/sound/open-close/reactor-open.ogg", volume = 0.5},
-    close_sound = {filename = "__base__/sound/open-close/reactor-close.ogg", volume = 0.5},
+    impact_category = "metal-large",
+    open_sound = { filename = "__base__/sound/open-close/reactor-open.ogg", volume = 0.5 },
+    close_sound = { filename = "__base__/sound/open-close/reactor-close.ogg", volume = 0.5 },
     working_sound = {
-      main_sounds = table.deepcopy(data.raw["reactor"]["nuclear-reactor"].working_sound),
-      sound_accents = accents,
-      max_sounds_per_prototype = 2
+        main_sounds = table.deepcopy(data.raw["reactor"]["nuclear-reactor"].working_sound),
+        sound_accents = accents,
+        max_sounds_per_prototype = 2
     },
     crafting_speed = 1,
     perceived_performance = {
@@ -323,19 +323,19 @@ local antimatter = {
     heating_energy = "150kW",
     energy_source =
     {
-      type = "burner",
-      fuel_categories = {"antimatter"},
-      fuel_inventory_size = 1
+        type = "burner",
+        fuel_categories = { "antimatter" },
+        fuel_inventory_size = 1
     },
     energy_usage = "10MW",
-    crafting_categories = {"conceptual-inversion"},
+    crafting_categories = { "conceptual-inversion" },
 }
 
 local car2 = table.deepcopy(data.raw.car.car)
 car2.name = "reference-car"
 car2.minable.result = "reference-car"
 car2.animation.layers[2].apply_runtime_tint = false
-car2.animation.layers[2].tint = {r=1, g=0.5, b=0.75, a=0.9}
+car2.animation.layers[2].tint = { r = 1, g = 0.5, b = 0.75, a = 0.9 }
 car2.icon = "__LasingAroundMk2__/graphics/icons/reference-car.png"
 car2.hidden_in_factoriopedia = true
 
@@ -355,7 +355,7 @@ data:extend({
         pick_sound = item_sounds.reactor_inventory_pickup,
         drop_sound = item_sounds.reactor_inventory_move,
         stack_size = 10,
-        weight = 200*kg,
+        weight = 200 * kg,
         default_import_location = "fulgora"
     },
     {
@@ -371,20 +371,20 @@ data:extend({
         pick_sound = item_sounds.vehicle_inventory_pickup,
         drop_sound = item_sounds.vehicle_inventory_move,
         stack_size = 1,
-        weight = 1000*kg,
+        weight = 1000 * kg,
         auto_recycle = false,
         hidden_in_factoriopedia = true
     },
     {
         type = "recipe",
         name = "reference-car",
-        localised_name = {"recipe-name.reference-car"},
-        categories={"conceptual-inversion"},
+        localised_name = { "recipe-name.reference-car" },
+        categories = { "conceptual-inversion" },
         ingredients = {
-            {type="item", name="ai-girlfriend", amount=1}
+            { type = "item", name = "ai-girlfriend", amount = 1 }
         },
         results = {
-            {type="item", name="reference-car", amount=1}
+            { type = "item", name = "reference-car", amount = 1 }
         },
         energy_required = 110,
         enabled = false,
@@ -415,7 +415,7 @@ data:extend({
         priority = "extra-high-no-scale",
         width = 40,
         height = 40,
-        flags = {"gui-icon"},
+        flags = { "gui-icon" },
         mipmap_count = 2,
         scale = 0.5
     }
