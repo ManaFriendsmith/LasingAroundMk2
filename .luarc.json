@@ -1,0 +1,25 @@
+{
+  "diagnostics.globals": [
+    "data",
+    "mods",
+    "kg",
+    "ScrapIndustry",
+    "settings",
+    "tune_up_data",
+    "script",
+    "game",
+    "remote",
+    "defines",
+    "global_laser_mill_reserved",
+    "serpent",
+    "log",
+    "assembling_machine_circuit_wire_max_distance",
+    "circuit_connector_definitions",
+    "universal_connector_template",
+    "util",
+    "hour",
+    "minute",
+    "pipecoverspictures"
+  ],
+  "diagnostics.disable": ["undefined-field"]
+}
