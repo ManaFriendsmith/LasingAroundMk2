@@ -1010,7 +1010,7 @@ if mods["space-age"] then
             ingredients = {
                 { type = "item", name = "high-density-chaos", amount = 1 },
                 { type = "item", name = "uranium-235",        amount = 1 },
-                { type = "item", name = "advanced-circuit",   amount = 1 }
+                { type = "item", name = "processing-unit",   amount = 1 }
             },
             results = {
                 { type = "item", name = "random-number-nullifier", amount = 1 }
