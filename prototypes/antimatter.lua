@@ -327,7 +327,7 @@ local antimatter = {
         fuel_categories = { "antimatter" },
         fuel_inventory_size = 1
     },
-    energy_usage = "10MW",
+    energy_usage = "5MW",
     crafting_categories = { "conceptual-inversion" },
 }
 
