@@ -9,7 +9,7 @@ Item ingredients with no canonical_cost value will have their recipes resursivel
 2. a recipe with the same name as the item prototype which outputs that item
 3. the only recipe that outputs that item with no solid byproducts (recycling recipes are not considered)
 
-Items with no discernible canonical recipe default to having a cost of 1.
+Items with no discernible canonical recipe default to having a cost of 1. Only recipes are evaluated, spoilage outputs are not.
 
 Fluid ingredients will not evaluate recipes. Fluids with no canonical_cost default to having a cost of 0.1.
 
@@ -33,6 +33,8 @@ This mod has a system that auto-generates alternate versions of recipes for the 
 
 *convert*: If true, the recipe will be converted to a laser mill recipe in place instead of generating a copy of the recipe. All properties below se_tooltip_entity will be ignored for converting the recipe in place.
 
+NOTA BENE: The SE-related functionality was carried over from 1.1 unedited. It is not well-tested because compatibility with SE in 2.1 is not currently implemented nor planned, but is left in in case someone wants to create a compatibility patch.
+
 *se_variant*: If convert is true, and Space Exploration is installed, generate a copy of the recipe with a crafting category of se_variant in addition to converting the recipe in place. This option exists because laser mills cannot be placed in space so converting the recipe means that the item can't be made in space at all (It is easy to make them placeable in space but the mechanical role of laser mills is extra productivity and the rule is no productivity bonuses in space.) Crafting categories that may be of use for this are space-crafting (space assembler), space-manufacturing (space manufactory), space-laser (laser facility). Helium will not be added to SE variants - the flavor reason for helium in laser mill recipes is "inert atmosphere" and there is no more inert atmosphere than a vacuum. Does nothing if convert is not true or SE is not installed, will cause an error if it is not a valid crafting category.
 
 *se_tooltip_entity*: For SE variants, the id of the entity to show in the tooltip. Useful values include se-space-assembling-machine, se-space-manufactory, and se-space-laser-laboratory.
@@ -55,10 +57,10 @@ If you want to create laser mill usable recipes manually instead of using this s
 
 OK. I hope you know what you're doing.
 
-Theoretically you can `require("__LasingAroundMk2__/lasermill-recipe-generator")` and it will do the thing you want it to.
+`require("__LasingAroundMk2__/lasermill-recipe-generator")` will return a table with some useful functions in it. Calling GenerateLaserMillRecipes() will, well, I'll give you three guesses. If recipes have already been generated and you want the helium cost of recipes to be recalculated, you will want to empty out the table canonical_item_costs. Note that calculating recipe costs is pretty expensive and will extend the game's startup time, so if you're planning to overwrite them you should prevent them from being calculated in the first place.
 
 There are two global variables to control when and whether recipes are generated.
 
-global_laser_mill_done: This is set to true once the recipe generator has done its thing. If it's set to anything, requiring the file again won't generate new recipes. Of course, you can set it back to nil yourself.
+global_laser_mill_done: This is set to true once the recipe generator has done its thing. If it's set to anything, trying to generate recipes again won't do anything. Of course, you can set it back to nil yourself.
 
-global_laser_mill_reserved: Directly requiring the file does not care about this. However, LasingAround will not run the recipe generator if this variable is set to anything, instead printing a message to the log. It's up to you run the generator at a different point.
+global_laser_mill_reserved: Directly calling GenerateLaserMillRecipes() does not care about this. However, LasingAround will not run the recipe generator if this variable is set to anything, instead printing a message to the log. It's up to you run the generator at a different point and to respect or disregard this global as necessary. I recommend setting the variable to the name of the mod that is reserving the recipe generator rather than just "foo" or something, to ease inter-mod communication and compatibility.
