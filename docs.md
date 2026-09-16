@@ -33,7 +33,7 @@ This mod has a system that auto-generates alternate versions of recipes for the 
 
 *convert*: If true, the recipe will be converted to a laser mill recipe in place instead of generating a copy of the recipe. All properties below se_tooltip_entity will be ignored for converting the recipe in place.
 
-NOTA BENE: The SE-related functionality was carried over from 1.1 unedited. It is not well-tested because compatibility with SE in 2.1 is not currently implemented nor planned, but is left in in case someone wants to create a compatibility patch.
+NOTA BENE: The SE-related functionality was carried over from 1.1 unedited. It is not well-tested because compatibility between SE and LasingAround in 2.1 is not currently implemented nor planned, but is left in in case someone wants to create a compatibility patch.
 
 *se_variant*: If convert is true, and Space Exploration is installed, generate a copy of the recipe with a crafting category of se_variant in addition to converting the recipe in place. This option exists because laser mills cannot be placed in space so converting the recipe means that the item can't be made in space at all (It is easy to make them placeable in space but the mechanical role of laser mills is extra productivity and the rule is no productivity bonuses in space.) Crafting categories that may be of use for this are space-crafting (space assembler), space-manufacturing (space manufactory), space-laser (laser facility). Helium will not be added to SE variants - the flavor reason for helium in laser mill recipes is "inert atmosphere" and there is no more inert atmosphere than a vacuum. Does nothing if convert is not true or SE is not installed, will cause an error if it is not a valid crafting category.
 
