@@ -57,7 +57,7 @@ If you want to create laser mill usable recipes manually instead of using this s
 
 OK. I hope you know what you're doing.
 
-`require("__LasingAroundMk2__/lasermill-recipe-generator")` will return a table with some useful functions in it. Calling GenerateLaserMillRecipes() will, well, I'll give you three guesses. If recipes have already been generated and you want the helium cost of recipes to be recalculated, you will want to empty out the table canonical_item_costs. Note that calculating recipe costs is pretty expensive and will extend the game's startup time, so if you're planning to overwrite them you should prevent them from being calculated in the first place.
+`require("__LasingAroundMk2__/lasermill-recipe-generator")` will return a table with some useful functions in it. Calling GenerateLaserMillRecipes() will, well, I'll give you three guesses. If recipes have already been generated and you want the helium cost of recipes to be recalculated, you will want to empty out the table canonical_item_costs. Note that calculating recipe costs repeatedly is pretty expensive and will extend the game's startup time, so if you're planning to overwrite them you should prevent them from being calculated in the first place.
 
 There are two global variables to control when and whether recipes are generated.
 
