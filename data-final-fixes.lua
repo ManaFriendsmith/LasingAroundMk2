@@ -33,6 +33,7 @@ if not mods["scrap-industry"] then
     if global_laser_mill_reserved then
         log("laser mill reserved by: " .. serpent.line(global_laser_mill_reserved))
     else
-        require("lasermill-recipe-generator")
+        local lrg = require("lasermill-recipe-generator")
+        lrg.GenerateLaserMillRecipes()
     end
 end

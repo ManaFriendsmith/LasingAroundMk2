@@ -1,7 +1,3 @@
-if global_laser_mill_done then
-    return
-end
-
 local rm = require("__pf-functions__/recipe-manipulation")
 local tm = require("__pf-functions__/technology-manipulation")
 local misc = require("__pf-functions__/misc")
@@ -163,16 +159,6 @@ if mods["Krastorio2"] and data.raw.recipe["iron-gear-wheel"] then
     end
 end
 
-local new_recipes = {}
-local new_recipes_helium = {}
-local new_recipes_multipliers = {}
-local new_recipes_tech_unlocks = {}
-
---local gubbins_allowed = settings.startup["lasingaround-allow-gubbins-in-mill"].value
---local circuits_allowed = settings.startup["lasingaround-allow-circuits-in-mill"].value
---local entities_allowed = settings.startup["lasingaround-allow-entities-in-mill"].value
-local hide_duplicates = settings.startup["lasingaround-hide-duplicate-recipes"].value
-
 local function get_main_product(recipe)
     if recipe.main_product then
         return recipe.main_product
@@ -309,162 +295,186 @@ lasermill = {
 
 local lasermill_property = mods["space-age"] and "lasermill_dlc" or "lasermill_vanilla"
 
-for name, recipe in pairs(data.raw.recipe) do
-    if recipe[lasermill_property] then
-        local lasdata = recipe[lasermill_property]
-        if true then
-            if lasdata.helium < 0 then
-                local estimated_cost = GetRecipeCost(recipe) * lasdata.helium * -1
-                if mods["space-age"] then
-                    estimated_cost = estimated_cost / 2
-                end
-                if estimated_cost < 0.6 and estimated_cost ~= 0 then
-                    local mult = math.ceil(1 / estimated_cost)
-                    lasdata.multiply = mult * (lasdata.multiply or 1)
-                    estimated_cost = estimated_cost * mult
-                end
-                lasdata.helium = math.ceil(estimated_cost - (mods["space-age"] and 0.1 or 0.2))
-            end
+local function GenerateLaserMillRecipes()
 
-            if lasdata.convert then
-                if lasdata.remove_fluids then
-                    remove_extraneous_fluids(recipe)
+    if global_laser_mill_done then
+        return
+    end
+
+    --local gubbins_allowed = settings.startup["lasingaround-allow-gubbins-in-mill"].value
+    --local circuits_allowed = settings.startup["lasingaround-allow-circuits-in-mill"].value
+    --local entities_allowed = settings.startup["lasingaround-allow-entities-in-mill"].value
+    local hide_duplicates = settings.startup["lasingaround-hide-duplicate-recipes"].value
+    local new_recipes = {}
+    local new_recipes_helium = {}
+    local new_recipes_multipliers = {}
+    local new_recipes_tech_unlocks = {}
+
+    for name, recipe in pairs(data.raw.recipe) do
+        if recipe[lasermill_property] then
+            local lasdata = recipe[lasermill_property]
+            if true then
+                if lasdata.helium < 0 then
+                    local estimated_cost = GetRecipeCost(recipe) * lasdata.helium * -1
+                    if mods["space-age"] then
+                        estimated_cost = estimated_cost / 2
+                    end
+                    if estimated_cost < 0.6 and estimated_cost ~= 0 then
+                        local mult = math.ceil(1 / estimated_cost)
+                        lasdata.multiply = mult * (lasdata.multiply or 1)
+                        estimated_cost = estimated_cost * mult
+                    end
+                    lasdata.helium = math.ceil(estimated_cost - (mods["space-age"] and 0.1 or 0.2))
                 end
-                if lasdata.remove_fluids_except then
-                    remove_extraneous_fluids(recipe, lasdata.remove_fluids_except)
-                end
-                new_recipes_helium[name] = lasdata.helium or 1
-                recipe.categories = { "laser-milling-exclusive" }
-                if lasdata.multiply then
-                    new_recipes_multipliers[recipe.name] = lasdata.multiply
-                end
-            end
-            if (not lasdata.convert) or (mods["space-exploration"] and lasdata.se_variant and lasdata.convert) then
-                local recipe_copy = table.deepcopy(recipe)
-                if lasdata.remove_fluids then
-                    remove_extraneous_fluids(recipe_copy)
-                end
-                if lasdata.remove_fluids_except then
-                    remove_extraneous_fluids(recipe, lasdata.remove_fluids_except)
-                end
+
                 if lasdata.convert then
-                    recipe_copy.name = name .. "-in-orbit"
-                    recipe_copy.categories = lasdata.se_variant
-                else
-                    recipe_copy.name = name .. "-in-laser-mill"
-                    recipe_copy.categories = { "laser-milling" }
-                    new_recipes_helium[recipe_copy.name] = lasdata.helium or 1
+                    if lasdata.remove_fluids then
+                        remove_extraneous_fluids(recipe)
+                    end
+                    if lasdata.remove_fluids_except then
+                        remove_extraneous_fluids(recipe, lasdata.remove_fluids_except)
+                    end
+                    new_recipes_helium[name] = lasdata.helium or 1
+                    recipe.categories = { "laser-milling-exclusive" }
                     if lasdata.multiply then
-                        new_recipes_multipliers[recipe_copy.name] = lasdata.multiply
+                        new_recipes_multipliers[recipe.name] = lasdata.multiply
                     end
                 end
-
-                if lasdata.prod_research then
-                    if type(lasdata.prod_research) == "string" then
-                        tm.AddUnlock(lasdata.prod_research,
-                            { type = "change-recipe-productivity", recipe = recipe_copy.name, change = 0.1 })
+                if (not lasdata.convert) or (mods["space-exploration"] and lasdata.se_variant and lasdata.convert) then
+                    local recipe_copy = table.deepcopy(recipe)
+                    if lasdata.remove_fluids then
+                        remove_extraneous_fluids(recipe_copy)
+                    end
+                    if lasdata.remove_fluids_except then
+                        remove_extraneous_fluids(recipe, lasdata.remove_fluids_except)
+                    end
+                    if lasdata.convert then
+                        recipe_copy.name = name .. "-in-orbit"
+                        recipe_copy.categories = lasdata.se_variant
                     else
-                        tm.AddUnlock(lasdata.prod_research[1],
-                            {
-                                type = "change-recipe-productivity",
-                                recipe = recipe_copy.name,
-                                change = lasdata
-                                    .prod_research[2]
-                            })
+                        recipe_copy.name = name .. "-in-laser-mill"
+                        recipe_copy.categories = { "laser-milling" }
+                        new_recipes_helium[recipe_copy.name] = lasdata.helium or 1
+                        if lasdata.multiply then
+                            new_recipes_multipliers[recipe_copy.name] = lasdata.multiply
+                        end
                     end
-                end
 
-                if lasdata.icon_offset ~= false then
-                    recipe_copy.icons = make_laser_recipe_icon(recipe, lasdata.icon_offset, lasdata.convert)
-                    recipe_copy.icon = nil
-                    recipe_copy.icon_mipmaps = nil
-                end
+                    if lasdata.prod_research then
+                        if type(lasdata.prod_research) == "string" then
+                            tm.AddUnlock(lasdata.prod_research,
+                                { type = "change-recipe-productivity", recipe = recipe_copy.name, change = 0.1 })
+                        else
+                            tm.AddUnlock(lasdata.prod_research[1],
+                                {
+                                    type = "change-recipe-productivity",
+                                    recipe = recipe_copy.name,
+                                    change = lasdata
+                                        .prod_research[2]
+                                })
+                        end
+                    end
 
-                if lasdata.convert then
-                    if recipe.localised_description then
-                        recipe.localised_description = { "", recipe.localised_description, "\n\n", { "recipe-description.also-made-without-helium", lasdata.se_tooltip_entity, { "entity-name." .. lasdata.se_tooltip_entity } } }
+                    if lasdata.icon_offset ~= false then
+                        recipe_copy.icons = make_laser_recipe_icon(recipe, lasdata.icon_offset, lasdata.convert)
+                        recipe_copy.icon = nil
+                        recipe_copy.icon_mipmaps = nil
+                    end
+
+                    if lasdata.convert then
+                        if recipe.localised_description then
+                            recipe.localised_description = { "", recipe.localised_description, "\n\n", { "recipe-description.also-made-without-helium", lasdata.se_tooltip_entity, { "entity-name." .. lasdata.se_tooltip_entity } } }
+                        else
+                            recipe.localised_description = { "?", { "", { "recipe-description." .. recipe.name }, "\n\n", { "recipe-description.also-made-without-helium", lasdata.se_tooltip_entity, { "entity-name." .. lasdata.se_tooltip_entity } } }, { "recipe-description.also-made-without-helium", lasdata.se_tooltip_entity, { "entity-name." .. lasdata.se_tooltip_entity } } }
+                            recipe_copy.localised_description = { "?", { "recipe-description." .. recipe_copy.name }, { "recipe-description." .. recipe.name },
+                                "" }
+                        end
                     else
-                        recipe.localised_description = { "?", { "", { "recipe-description." .. recipe.name }, "\n\n", { "recipe-description.also-made-without-helium", lasdata.se_tooltip_entity, { "entity-name." .. lasdata.se_tooltip_entity } } }, { "recipe-description.also-made-without-helium", lasdata.se_tooltip_entity, { "entity-name." .. lasdata.se_tooltip_entity } } }
-                        recipe_copy.localised_description = { "?", { "recipe-description." .. recipe_copy.name }, { "recipe-description." .. recipe.name },
-                            "" }
+                        if recipe.localised_description then
+                            recipe.localised_description = { "", recipe.localised_description, "\n\n", { "recipe-description.also-made-with-helium", "laser-mill", { "entity-name.laser mill" } } }
+                        else
+                            recipe.localised_description = { "?", { "", { "recipe-description." .. recipe.name }, "\n\n", { "recipe-description.also-made-with-helium", "laser-mill", { "entity-name.laser-mill" } } }, { "recipe-description.also-made-with-helium", "laser-mill", { "entity-name.laser-mill" } } }
+                            recipe_copy.localised_description = { "?", { "recipe-description." .. recipe_copy.name }, { "recipe-description." .. recipe.name },
+                                "" }
+                        end
                     end
-                else
-                    if recipe.localised_description then
-                        recipe.localised_description = { "", recipe.localised_description, "\n\n", { "recipe-description.also-made-with-helium", "laser-mill", { "entity-name.laser mill" } } }
+
+                    if recipe.localised_name then
+                        recipe_copy.localised_name = { "recipe-name.laser-mill-recipe", recipe.localised_name }
                     else
-                        recipe.localised_description = { "?", { "", { "recipe-description." .. recipe.name }, "\n\n", { "recipe-description.also-made-with-helium", "laser-mill", { "entity-name.laser-mill" } } }, { "recipe-description.also-made-with-helium", "laser-mill", { "entity-name.laser-mill" } } }
-                        recipe_copy.localised_description = { "?", { "recipe-description." .. recipe_copy.name }, { "recipe-description." .. recipe.name },
-                            "" }
+                        recipe_copy.localised_name = { "recipe-name.laser-mill-recipe", { "?", { "recipe-name." .. recipe.name }, { "item-name." .. get_main_product(recipe) }, { "entity-name." .. get_main_product(recipe) } } }
                     end
-                end
 
-                if recipe.localised_name then
-                    recipe_copy.localised_name = { "recipe-name.laser-mill-recipe", recipe.localised_name }
-                else
-                    recipe_copy.localised_name = { "recipe-name.laser-mill-recipe", { "?", { "recipe-name." .. recipe.name }, { "item-name." .. get_main_product(recipe) }, { "entity-name." .. get_main_product(recipe) } } }
-                end
-
-                if hide_duplicates then
-                    recipe_copy.hide_from_player_crafting = true
-                end
-
-                recipe_copy.always_show_made_in = true
-
-                --allow more convenience for specifying this
-                if lasdata.unlock == true then
-                    recipe_copy.enabled = true
-                else
-                    recipe_copy.enabled = false
-                    if lasdata.unlock ~= false then
-                        if lasdata.unlock == nil then lasdata.unlock = { "laser-mill" } end
-                        if type(lasdata.unlock) == "string" then lasdata.unlock = { lasdata.unlock } end
-                        new_recipes_tech_unlocks[recipe_copy.name] = lasdata.unlock
+                    if hide_duplicates then
+                        recipe_copy.hide_from_player_crafting = true
                     end
+
+                    recipe_copy.always_show_made_in = true
+
+                    --allow more convenience for specifying this
+                    if lasdata.unlock == true then
+                        recipe_copy.enabled = true
+                    else
+                        recipe_copy.enabled = false
+                        if lasdata.unlock ~= false then
+                            if lasdata.unlock == nil then lasdata.unlock = { "laser-mill" } end
+                            if type(lasdata.unlock) == "string" then lasdata.unlock = { lasdata.unlock } end
+                            new_recipes_tech_unlocks[recipe_copy.name] = lasdata.unlock
+                        end
+                    end
+                    --techfuncs unlock-adding function requires the recipe to first exist in data.raw, but we are iterating over data.raw as we speak so we cannot add it here
+
+                    if lasdata.productivity ~= nil then
+                        recipe_copy.allow_productivity = true
+                    end
+
+                    --log("generating laser mill recipe: " .. recipe_copy.name)
+
+                    recipe_copy.auto_recycle = false
+                    table.insert(new_recipes, recipe_copy)
                 end
-                --techfuncs unlock-adding function requires the recipe to first exist in data.raw, but we are iterating over data.raw as we speak so we cannot add it here
-
-                if lasdata.productivity ~= nil then
-                    recipe_copy.allow_productivity = true
-                end
-
-                --log("generating laser mill recipe: " .. recipe_copy.name)
-
-                recipe_copy.auto_recycle = false
-                table.insert(new_recipes, recipe_copy)
             end
         end
     end
-end
 
-if #new_recipes > 0 then
-    data:extend(new_recipes)
-end
-
-for name, techs in pairs(new_recipes_tech_unlocks) do
-    for _, technology in pairs(techs) do
-        tm.AddUnlock(technology, name)
+    if #new_recipes > 0 then
+        data:extend(new_recipes)
     end
-end
 
-for name, multiplier in pairs(new_recipes_multipliers) do
-    rm.MultiplyRecipe(name, multiplier)
-end
+    for name, techs in pairs(new_recipes_tech_unlocks) do
+        for _, technology in pairs(techs) do
+            tm.AddUnlock(technology, name)
+        end
+    end
 
-for name, helium in pairs(new_recipes_helium) do
-    local i = 2
-    rm.AddIngredient(name, "helium", helium)
-    for k, v in pairs(data.raw.recipe[name].ingredients) do
-        if v.type == "fluid" then
-            if v.name == "helium" then
-                v.fluidbox_index = 1
-            else
-                v.fluidbox_index = i
-                i = i + 1
+    for name, multiplier in pairs(new_recipes_multipliers) do
+        rm.MultiplyRecipe(name, multiplier)
+    end
+
+    for name, helium in pairs(new_recipes_helium) do
+        local i = 2
+        rm.AddIngredient(name, "helium", helium)
+        for k, v in pairs(data.raw.recipe[name].ingredients) do
+            if v.type == "fluid" then
+                if v.name == "helium" then
+                    v.fluidbox_index = 1
+                else
+                    v.fluidbox_index = i
+                    i = i + 1
+                end
             end
         end
     end
+
+    --log(serpent.block(canonical_item_costs))
+    global_laser_mill_done = true
+
 end
 
-log(serpent.block(canonical_item_costs))
-
-global_laser_mill_done = true
+return {
+    canonical_item_costs = canonical_item_costs,
+    get_canonical_recipe = get_canonical_recipe,
+    GetItemCost = GetItemCost,
+    GetRecipeCost = GetRecipeCost,
+    GenerateLaserMillRecipes = GenerateLaserMillRecipes
+}
