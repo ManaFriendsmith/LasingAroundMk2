@@ -369,8 +369,8 @@ local function GenerateLaserMillRecipes()
                                 {
                                     type = "change-recipe-productivity",
                                     recipe = recipe_copy.name,
-                                    change = lasdata
-                                        .prod_research[2]
+                                    change = lasdata.prod_research[2],
+                                    hidden = lasdata.prod_research[3] == "hidden"
                                 })
                         end
                     end
