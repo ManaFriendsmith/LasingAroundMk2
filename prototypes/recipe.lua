@@ -573,7 +573,7 @@ if tune_up_data then
         categories = { "tuning-up" },
         count = 1,
         energy_required = 1,
-        ingredients = { { { "superconductor", 1 }, { "helium", 5 } } }
+        ingredients = { { { "superconductor", 1 }, { "helium", 5 } }, { { "electronic-circuit", 2 }, { "helium", 5 } } }
     }
 
     tune_up_data.recipes["weird-alien-gizmo"] = {
@@ -598,52 +598,64 @@ if tune_up_data then
     }
 
     tune_up_data.recipes["antimatter-power-cell"] = {
-        categories = { "tuning-up" },
+        categories = { "purification" },
         count = 1,
         energy_required = 3,
-        ingredients = { { { "helium", 10 } } }
+        ingredients = { { { "helium", 5 } } }
     }
 
     tune_up_data.recipes["tracker"] = {
         categories = { "tuning-up" },
         count = 1,
         energy_required = 5,
-        ingredients = { { { "advanced-circuit", 3 }, { "battery", 3 } } }
+        ingredients = { { { "advanced-circuit", 3 }, { "battery", 3 } } },
+        scrap_types = { { "robotic-scrap", 1 }, { "electronic-scrap", 2 } },
+        scrap_yield = 20
     }
 
     tune_up_data.recipes["micron-tolerance-components"] = {
         categories = { "tuning-up" },
-        count = 10,
-        energy_required = 5,
-        ingredients = { { { "invar-plate", 1 }, { "helium", 3 } } }
+        count = data.raw.item["nitinol-plate"] and 100 or 10,
+        energy_required = data.raw.item["nitinol-plate"] and 50 or 5,
+        ingredients = { { { "nitinol-plate", 1 }, { "helium", 30 } }, { { "invar-plate", 1 }, { "helium", 3 } } },
+        scrap_types = { { "metal-scrap", 1 } },
+        scrap_yield = data.raw.item["nitinol-plate"] and 20 or 2
     }
 
     tune_up_data.recipes["scanner"] = {
         categories = { "tuning-up" },
-        count = 5,
-        energy_required = 10,
-        ingredients = { { { "laser", 5 }, { "processing-unit", 1 } } }
+        count = 3,
+        energy_required = 2,
+        ingredients = { { { "laser", 3 }, { "processing-unit", mods["space-age"] and 2 or 1 } } },
+        scrap_types = { { "electronic-scrap", 1 } },
+        scrap_yield = 50
     }
 
     tune_up_data.recipes["cardinal-grammeter"] = {
         categories = { "tuning-up" },
         count = 4,
         energy_required = 10,
-        ingredients = { { { "hydrocoptic-marzelvane", 1 }, { "quantum-processor", 1 } } }
+        ingredients = { { { "hydrocoptic-marzelvane", 1 }, { "quantum-processor", 1 } }, { { "rocket-control-unit", 1 }, { "quantum-processor", 1 } } },
+        scrap_types = { { "superconducting-scrap", 2 }, { "electronic-scrap", 1 } },
+        scrap_yield = 45
     }
 
     tune_up_data.recipes["high-density-chaos"] = {
         categories = { "tuning-up" },
-        count = 5,
-        energy_required = 10,
-        ingredients = { { { "cluster-grenade", 1 } } }
+        count = 2,
+        energy_required = 2,
+        ingredients = { { { "cluster-grenade", 1 } } },
+        scrap_types = { { "metal-scrap", 1 } },
+        scrap_yield = 4
     }
 
     tune_up_data.recipes["random-number-nullifier"] = {
         categories = { "tuning-up" },
         count = 3,
         energy_required = 10,
-        ingredients = { { { "weird-alien-gizmo", 1 } } }
+        ingredients = { { { "weird-alien-gizmo", 1 }, { "scrap", 1, "byproduct" } } },
+        scrap_types = { { "robotic-scrap", 1 } },
+        scrap_yield = 10
     }
 
     tune_up_data.recipes["art-rotators"] = {
@@ -657,7 +669,9 @@ if tune_up_data then
         categories = { "tuning-up" },
         count = 3,
         energy_required = 10,
-        ingredients = { { { "advanced-circuit", 7 } } }
+        ingredients = { { { "advanced-circuit", 7 }, { "copper-cable", 7, "byproduct" } } },
+        scrap_types = { { "electronic-scrap", 1 } },
+        scrap_yield = 30
     }
 
     tune_up_data.recipes["pentapod-gatekeeper"] = {
@@ -671,7 +685,9 @@ if tune_up_data then
         categories = { "tuning-up" },
         count = 1,
         energy_required = 10,
-        ingredients = { { { "power-switch", 2 } } }
+        ingredients = { { { "power-switch", 5 }, { "decider-combinator", 1, "byproduct" } } },
+        scrap_types = { { "electronic-scrap", 1 } },
+        scrap_yield = 20
     }
 
     tune_up_data.recipes["weighted-blanket"] = {
@@ -685,7 +701,9 @@ if tune_up_data then
         categories = { "tuning-up" },
         count = 5,
         energy_required = 5,
-        ingredients = { { { "uranium-238", 1 } } }
+        ingredients = { { { "uranium-238", 1 } } },
+        scrap_types = { { "metal-scrap", 1 } },
+        scrap_yield = 2
     }
 
     tune_up_data.recipes["ordinary-human-brain"] = {
@@ -699,21 +717,27 @@ if tune_up_data then
         categories = { "tuning-up" },
         count = 10,
         energy_required = 20,
-        ingredients = { { { "recycler", 1 } } }
+        ingredients = { { { "recycler", 1 } } },
+        scrap_types = { { "robotic-scrap", 1 } },
+        scrap_yield = 100
     }
 
     tune_up_data.recipes["dormant-newtronic-chip"] = {
         categories = { "tuning-up" },
         count = 2,
         energy_required = 10,
-        ingredients = { { { "cardinal-grammeter", 1 } } }
+        ingredients = { { { "cardinal-grammeter", 1 }, { "spectroscope", 1 }, { "tracker", 1 } }, { { "cardinal-grammeter", 1 }, { "spectroscope", 1 } } },
+        scrap_types = { { "electronic-scrap", 1 }, { "robotic-scrap", 1 } },
+        scrap_yield = 40
     }
 
     tune_up_data.recipes["pulsing-newtronic-chip"] = {
         categories = { "tuning-up" },
         count = 2,
         energy_required = 10,
-        ingredients = { { { "cardinal-grammeter", 1 } } }
+        ingredients = { { { "cardinal-grammeter", 1 }, { "spectroscope", 1 }, { "tracker", 1 } }, { { "cardinal-grammeter", 1 }, { "spectroscope", 1 } } },
+        scrap_types = { { "electronic-scrap", 1 }, { "robotic-scrap", 1 } },
+        scrap_yield = 40
     }
 end
 
